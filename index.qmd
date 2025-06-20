@@ -1,6 +1,6 @@
 ---
 title: CompanionBot
-subtitle: Final Project for the Adavance Software Development Methods Course
+subtitle: Final Project for the "Adavanced Software Development Methods" Course
 date: 24 June 2025
 execute:
   echo: true
