@@ -1,0 +1,34 @@
+project:
+  type: manuscript
+  output-dir: _output
+  preview:
+    port: 4001
+  # render:
+  #   - documents/*
+
+manuscript:
+  article: index.qmd
+  meca-bundle: "companionbot-final-project.zip"
+format:
+  html:
+    # comments:
+    #   hypothesis: true
+    page-layout: full
+  docx:
+    output-file: companionbot-final-project
+    output-ext: docx
+  jats: default
+
+  # (other formats)
+  pdf:
+    output-file: companionbot-final-project 
+    output-ext: pdf
+    toc: true
+    bibliography: references.bib
+    documentclass: scrartcl
+
+execute:
+  freeze: auto
+
+
+
