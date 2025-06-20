@@ -1,0 +1,3305 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en" xml:lang="en"><head>
+
+<meta charset="utf-8">
+<meta name="generator" content="quarto-1.6.40">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+
+<meta name="dcterms.date" content="2025-06-24">
+
+<title>CompanionBot</title>
+<style>
+code{white-space: pre-wrap;}
+span.smallcaps{font-variant: small-caps;}
+div.columns{display: flex; gap: min(4vw, 1.5em);}
+div.column{flex: auto; overflow-x: auto;}
+div.hanging-indent{margin-left: 1.5em; text-indent: -1.5em;}
+ul.task-list{list-style: none;}
+ul.task-list li input[type="checkbox"] {
+  width: 0.8em;
+  margin: 0 0.8em 0.2em -1em; /* quarto-specific, see https://github.com/quarto-dev/quarto-cli/issues/4556 */ 
+  vertical-align: middle;
+}
+</style>
+
+
+<script src="site_libs/clipboard/clipboard.min.js"></script>
+<script src="site_libs/quarto-html/quarto.js"></script>
+<script src="site_libs/quarto-html/popper.min.js"></script>
+<script src="site_libs/quarto-html/tippy.umd.min.js"></script>
+<script src="site_libs/quarto-html/anchor.min.js"></script>
+<link href="site_libs/quarto-html/tippy.css" rel="stylesheet">
+<link href="site_libs/quarto-html/quarto-syntax-highlighting-549806ee2085284f45b00abea8c6df48.css" rel="stylesheet" id="quarto-text-highlighting-styles">
+<script src="site_libs/bootstrap/bootstrap.min.js"></script>
+<link href="site_libs/bootstrap/bootstrap-icons.css" rel="stylesheet">
+<link href="site_libs/bootstrap/bootstrap-bac1c56864119d97d87e9872e9e076ce.min.css" rel="stylesheet" append-hash="true" id="quarto-bootstrap" data-mode="light">
+<script src="site_libs/quarto-contrib/glightbox/glightbox.min.js"></script>
+<link href="site_libs/quarto-contrib/glightbox/glightbox.min.css" rel="stylesheet">
+<link href="site_libs/quarto-contrib/glightbox/lightbox.css" rel="stylesheet">
+
+
+<meta name="citation_title" content="CompanionBot">
+<meta name="citation_author" content="Andrey Malyukov">
+<meta name="citation_author" content="Anton Voronov">
+<meta name="citation_author" content="Nikita Podstrelov">
+<meta name="citation_author" content="Aleksandr Grinbaum">
+<meta name="citation_author" content="Solomon Naftaliyev">
+<meta name="citation_author" content="Bohdan Zachepa">
+<meta name="citation_author" content="Nikita Popilin">
+<meta name="citation_publication_date" content="2025-06-24">
+<meta name="citation_cover_date" content="2025-06-24">
+<meta name="citation_year" content="2025">
+<meta name="citation_online_date" content="2025-06-24">
+<meta name="citation_language" content="en">
+<meta name="citation_reference" content="citation_title=Literate programming;,citation_author=Donald E. Knuth;,citation_publication_date=1984-05;,citation_cover_date=1984-05;,citation_year=1984;,citation_fulltext_html_url=https://doi.org/10.1093/comjnl/27.2.97;,citation_issue=2;,citation_doi=10.1093/comjnl/27.2.97;,citation_issn=0010-4620;,citation_volume=27;,citation_journal_title=Comput. J.;,citation_publisher=Oxford University Press, Inc.;">
+</head>
+
+<body>
+
+<header id="title-block-header" class="quarto-title-block default toc-left page-columns page-full">
+  <div class="quarto-title-banner page-columns page-full">
+    <div class="quarto-title column-page-right">
+      <h1 class="title">CompanionBot</h1>
+            <p class="subtitle lead">Final Project for the “Adavanced Software Development Methods” Course</p>
+          </div>
+
+    
+    <div class="quarto-title-meta-container">
+      <div class="quarto-title-meta-column-start">
+            <div class="quarto-title-meta-author column-page-right">
+          <div class="quarto-title-meta-heading">Authors</div>
+          <div class="quarto-title-meta-heading">Affiliation</div>
+          
+                <div class="quarto-title-meta-contents">
+            <p class="author">Andrey Malyukov <a href="mailto:ds-an@tuta.io" class="quarto-title-author-email"><i class="bi bi-envelope"></i></a> </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Anton Voronov </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Nikita Podstrelov </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Aleksandr Grinbaum </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Solomon Naftaliyev </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Bohdan Zachepa </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                      <div class="quarto-title-meta-contents">
+            <p class="author">Nikita Popilin </p>
+          </div>
+                <div class="quarto-title-meta-contents">
+                    <p class="affiliation">
+                        Sami Shamoon College of Engineering
+                      </p>
+                  </div>
+                    </div>
+        
+        <div class="quarto-title-meta column-page-right">
+
+                      
+                <div>
+            <div class="quarto-title-meta-heading">Published</div>
+            <div class="quarto-title-meta-contents">
+              <p class="date">June 24, 2025</p>
+            </div>
+          </div>
+          
+                
+              </div>
+      </div>
+      <div class="quarto-title-meta-column-end quarto-other-formats-target">
+      <div class="quarto-alternate-formats"><div class="quarto-title-meta-heading">Other Formats</div><div class="quarto-title-meta-contents"><p><a href="companionbot-final-project.docx"><i class="bi bi-file-word"></i>MS Word</a></p></div><div class="quarto-title-meta-contents"><p><a href="companionbot-final-project.pdf"><i class="bi bi-file-pdf"></i>PDF</a></p></div><div class="quarto-title-meta-contents"><p><a href="companionbot-final-project.zip" data-meca-link="true"><i class="bi bi-archive"></i>MECA Bundle</a></p></div></div></div>
+    </div>
+
+
+
+    <div class="quarto-other-links-text-target">
+    </div>  </div>
+</header><div id="quarto-content" class="page-columns page-rows-contents page-layout-full toc-left">
+<div id="quarto-sidebar-toc-left" class="sidebar toc-left">
+  <nav id="TOC" role="doc-toc" class="toc-active">
+    <h2 id="toc-title">Table of contents</h2>
+   
+  <ul>
+  <li><a href="#companionbot-system-definition-and-super-characterization" id="toc-companionbot-system-definition-and-super-characterization" class="nav-link active" data-scroll-target="#companionbot-system-definition-and-super-characterization">1. CompanionBot: System Definition and Super-Characterization</a>
+  <ul class="collapse">
+  <li><a href="#purpose-of-the-system" id="toc-purpose-of-the-system" class="nav-link" data-scroll-target="#purpose-of-the-system">Purpose of the System</a></li>
+  <li><a href="#what-the-system-will-do" id="toc-what-the-system-will-do" class="nav-link" data-scroll-target="#what-the-system-will-do">What the System Will Do</a>
+  <ul class="collapse">
+  <li><a href="#core-functionalities" id="toc-core-functionalities" class="nav-link" data-scroll-target="#core-functionalities">Core Functionalities</a></li>
+  <li><a href="#advanced-ai-capabilities" id="toc-advanced-ai-capabilities" class="nav-link" data-scroll-target="#advanced-ai-capabilities">Advanced AI Capabilities</a></li>
+  </ul></li>
+  <li><a href="#how-users-will-interact-with-the-system" id="toc-how-users-will-interact-with-the-system" class="nav-link" data-scroll-target="#how-users-will-interact-with-the-system">How Users Will Interact with the System</a>
+  <ul class="collapse">
+  <li><a href="#primary-interaction-modalities" id="toc-primary-interaction-modalities" class="nav-link" data-scroll-target="#primary-interaction-modalities">Primary Interaction Modalities</a></li>
+  <li><a href="#accessibility-features" id="toc-accessibility-features" class="nav-link" data-scroll-target="#accessibility-features">Accessibility Features</a></li>
+  </ul></li>
+  <li><a href="#who-will-use-the-system" id="toc-who-will-use-the-system" class="nav-link" data-scroll-target="#who-will-use-the-system">Who Will Use the System</a>
+  <ul class="collapse">
+  <li><a href="#primary-users" id="toc-primary-users" class="nav-link" data-scroll-target="#primary-users">Primary Users</a></li>
+  <li><a href="#secondary-users" id="toc-secondary-users" class="nav-link" data-scroll-target="#secondary-users">Secondary Users</a></li>
+  </ul></li>
+  <li><a href="#constraints-privacy-security-ethics" id="toc-constraints-privacy-security-ethics" class="nav-link" data-scroll-target="#constraints-privacy-security-ethics">Constraints (Privacy, Security, Ethics)</a>
+  <ul class="collapse">
+  <li><a href="#privacy-constraints" id="toc-privacy-constraints" class="nav-link" data-scroll-target="#privacy-constraints">Privacy Constraints</a></li>
+  <li><a href="#security-constraints" id="toc-security-constraints" class="nav-link" data-scroll-target="#security-constraints">Security Constraints</a></li>
+  <li><a href="#ethical-constraints" id="toc-ethical-constraints" class="nav-link" data-scroll-target="#ethical-constraints">Ethical Constraints</a></li>
+  </ul></li>
+  <li><a href="#scientific-reasoning-and-research-foundation" id="toc-scientific-reasoning-and-research-foundation" class="nav-link" data-scroll-target="#scientific-reasoning-and-research-foundation">Scientific Reasoning and Research Foundation</a>
+  <ul class="collapse">
+  <li><a href="#loneliness-and-social-isolation-research" id="toc-loneliness-and-social-isolation-research" class="nav-link" data-scroll-target="#loneliness-and-social-isolation-research">Loneliness and Social Isolation Research</a></li>
+  <li><a href="#medication-management-and-health-compliance" id="toc-medication-management-and-health-compliance" class="nav-link" data-scroll-target="#medication-management-and-health-compliance">Medication Management and Health Compliance</a></li>
+  <li><a href="#cognitive-engagement-and-mental-health" id="toc-cognitive-engagement-and-mental-health" class="nav-link" data-scroll-target="#cognitive-engagement-and-mental-health">Cognitive Engagement and Mental Health</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#stakeholder-analysis-and-decision-making-framework" id="toc-stakeholder-analysis-and-decision-making-framework" class="nav-link" data-scroll-target="#stakeholder-analysis-and-decision-making-framework">2. Stakeholder Analysis and Decision-Making Framework</a>
+  <ul class="collapse">
+  <li><a href="#primary-stakeholders" id="toc-primary-stakeholders" class="nav-link" data-scroll-target="#primary-stakeholders">Primary Stakeholders</a></li>
+  <li><a href="#decision-making-framework" id="toc-decision-making-framework" class="nav-link" data-scroll-target="#decision-making-framework">Decision-Making Framework</a>
+  <ul class="collapse">
+  <li><a href="#decision-authority-matrix" id="toc-decision-authority-matrix" class="nav-link" data-scroll-target="#decision-authority-matrix">Decision Authority Matrix</a></li>
+  <li><a href="#decision-making-process" id="toc-decision-making-process" class="nav-link" data-scroll-target="#decision-making-process">Decision-Making Process</a></li>
+  <li><a href="#decision-making-philosophy" id="toc-decision-making-philosophy" class="nav-link" data-scroll-target="#decision-making-philosophy">Decision-Making Philosophy</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#flowchartsystem-architecture-diagram" id="toc-flowchartsystem-architecture-diagram" class="nav-link" data-scroll-target="#flowchartsystem-architecture-diagram">3. Flowchart/System Architecture Diagram</a></li>
+  <li><a href="#resources-required-for-system-development" id="toc-resources-required-for-system-development" class="nav-link" data-scroll-target="#resources-required-for-system-development">4. Resources Required for System Development</a>
+  <ul class="collapse">
+  <li><a href="#human-resources" id="toc-human-resources" class="nav-link" data-scroll-target="#human-resources">1. Human Resources</a>
+  <ul class="collapse">
+  <li><a href="#product-team" id="toc-product-team" class="nav-link" data-scroll-target="#product-team">Product Team</a></li>
+  <li><a href="#development-team" id="toc-development-team" class="nav-link" data-scroll-target="#development-team">Development Team</a></li>
+  <li><a href="#specialized-roles" id="toc-specialized-roles" class="nav-link" data-scroll-target="#specialized-roles">Specialized Roles</a></li>
+  <li><a href="#support-operations" id="toc-support-operations" class="nav-link" data-scroll-target="#support-operations">Support &amp; Operations</a></li>
+  </ul></li>
+  <li><a href="#technical-and-digital-infrastructure" id="toc-technical-and-digital-infrastructure" class="nav-link" data-scroll-target="#technical-and-digital-infrastructure">2. Technical and Digital Infrastructure</a></li>
+  <li><a href="#organizational-and-business-resources" id="toc-organizational-and-business-resources" class="nav-link" data-scroll-target="#organizational-and-business-resources">3. Organizational and Business Resources</a></li>
+  <li><a href="#financial-resources" id="toc-financial-resources" class="nav-link" data-scroll-target="#financial-resources">4. Financial Resources</a></li>
+  <li><a href="#legal-and-compliance-resources" id="toc-legal-and-compliance-resources" class="nav-link" data-scroll-target="#legal-and-compliance-resources">5. Legal and Compliance Resources</a></li>
+  <li><a href="#launch-ready-metrics-and-kpis" id="toc-launch-ready-metrics-and-kpis" class="nav-link" data-scroll-target="#launch-ready-metrics-and-kpis">6. Launch-Ready Metrics and KPIs</a></li>
+  </ul></li>
+  <li><a href="#detailed-list-of-tasks-and-required-resources" id="toc-detailed-list-of-tasks-and-required-resources" class="nav-link" data-scroll-target="#detailed-list-of-tasks-and-required-resources">5. Detailed List of Tasks and Required Resources</a></li>
+  <li><a href="#evaluation-of-scheduling-and-prioritization-of-tasks-and-resources" id="toc-evaluation-of-scheduling-and-prioritization-of-tasks-and-resources" class="nav-link" data-scroll-target="#evaluation-of-scheduling-and-prioritization-of-tasks-and-resources">6. Evaluation of Scheduling and Prioritization of Tasks and Resources</a>
+  <ul class="collapse">
+  <li><a href="#framework-overview" id="toc-framework-overview" class="nav-link" data-scroll-target="#framework-overview">1. Framework Overview</a></li>
+  <li><a href="#resource-classification-and-strategic-allocation" id="toc-resource-classification-and-strategic-allocation" class="nav-link" data-scroll-target="#resource-classification-and-strategic-allocation">2. Resource Classification and Strategic Allocation</a>
+  <ul class="collapse">
+  <li><a href="#human-resource-distribution" id="toc-human-resource-distribution" class="nav-link" data-scroll-target="#human-resource-distribution">Human Resource Distribution</a></li>
+  <li><a href="#technical-infrastructure-prioritization" id="toc-technical-infrastructure-prioritization" class="nav-link" data-scroll-target="#technical-infrastructure-prioritization">Technical Infrastructure Prioritization</a></li>
+  </ul></li>
+  <li><a href="#task-prioritization-methodology" id="toc-task-prioritization-methodology" class="nav-link" data-scroll-target="#task-prioritization-methodology">3. Task Prioritization Methodology</a>
+  <ul class="collapse">
+  <li><a href="#multi-criteria-decision-framework" id="toc-multi-criteria-decision-framework" class="nav-link" data-scroll-target="#multi-criteria-decision-framework">Multi-Criteria Decision Framework</a></li>
+  <li><a href="#feature-development-priority-tiers" id="toc-feature-development-priority-tiers" class="nav-link" data-scroll-target="#feature-development-priority-tiers">Feature Development Priority Tiers</a></li>
+  </ul></li>
+  <li><a href="#development-timeline-and-critical-path-management" id="toc-development-timeline-and-critical-path-management" class="nav-link" data-scroll-target="#development-timeline-and-critical-path-management">4. Development Timeline and Critical Path Management</a>
+  <ul class="collapse">
+  <li><a href="#phase-based-development-schedule" id="toc-phase-based-development-schedule" class="nav-link" data-scroll-target="#phase-based-development-schedule">Phase-Based Development Schedule</a></li>
+  <li><a href="#critical-path-analysis" id="toc-critical-path-analysis" class="nav-link" data-scroll-target="#critical-path-analysis">Critical Path Analysis</a></li>
+  </ul></li>
+  <li><a href="#performance-monitoring-and-optimization" id="toc-performance-monitoring-and-optimization" class="nav-link" data-scroll-target="#performance-monitoring-and-optimization">5. Performance Monitoring and Optimization</a>
+  <ul class="collapse">
+  <li><a href="#resource-utilization-metrics" id="toc-resource-utilization-metrics" class="nav-link" data-scroll-target="#resource-utilization-metrics">Resource Utilization Metrics</a></li>
+  </ul></li>
+  <li><a href="#financial-resource-management-and-risk-mitigation" id="toc-financial-resource-management-and-risk-mitigation" class="nav-link" data-scroll-target="#financial-resource-management-and-risk-mitigation">6. Financial Resource Management and Risk Mitigation</a>
+  <ul class="collapse">
+  <li><a href="#budget-allocation-and-optimization" id="toc-budget-allocation-and-optimization" class="nav-link" data-scroll-target="#budget-allocation-and-optimization">Budget Allocation and Optimization</a></li>
+  </ul></li>
+  <li><a href="#quality-assurance-and-compliance-resource-allocation" id="toc-quality-assurance-and-compliance-resource-allocation" class="nav-link" data-scroll-target="#quality-assurance-and-compliance-resource-allocation">7. Quality Assurance and Compliance Resource Allocation</a>
+  <ul class="collapse">
+  <li><a href="#quality-driven-resource-distribution" id="toc-quality-driven-resource-distribution" class="nav-link" data-scroll-target="#quality-driven-resource-distribution">Quality-Driven Resource Distribution</a></li>
+  <li><a href="#risk-based-testing-strategy" id="toc-risk-based-testing-strategy" class="nav-link" data-scroll-target="#risk-based-testing-strategy">Risk-Based Testing Strategy</a></li>
+  </ul></li>
+  </ul></li>
+  <li><a href="#dependency-identification" id="toc-dependency-identification" class="nav-link" data-scroll-target="#dependency-identification">7. Dependency Identification</a>
+  <ul class="collapse">
+  <li><a href="#technical-dependencies" id="toc-technical-dependencies" class="nav-link" data-scroll-target="#technical-dependencies">Technical Dependencies</a></li>
+  <li><a href="#organizational-and-process-dependencies" id="toc-organizational-and-process-dependencies" class="nav-link" data-scroll-target="#organizational-and-process-dependencies">Organizational and Process Dependencies</a></li>
+  <li><a href="#vendor-and-regulatory-dependencies" id="toc-vendor-and-regulatory-dependencies" class="nav-link" data-scroll-target="#vendor-and-regulatory-dependencies">Vendor and Regulatory Dependencies</a></li>
+  <li><a href="#mitigation-strategies" id="toc-mitigation-strategies" class="nav-link" data-scroll-target="#mitigation-strategies">Mitigation Strategies</a></li>
+  </ul></li>
+  <li><a href="#identification-and-assessment-of-risks-in-terms-of-resources" id="toc-identification-and-assessment-of-risks-in-terms-of-resources" class="nav-link" data-scroll-target="#identification-and-assessment-of-risks-in-terms-of-resources">8. Identification and Assessment of Risks (in Terms of Resources)</a>
+  <ul class="collapse">
+  <li><a href="#human-resource-risks" id="toc-human-resource-risks" class="nav-link" data-scroll-target="#human-resource-risks">Human Resource Risks</a></li>
+  <li><a href="#technical-resource-risks" id="toc-technical-resource-risks" class="nav-link" data-scroll-target="#technical-resource-risks">Technical Resource Risks</a></li>
+  <li><a href="#financial-resource-risks" id="toc-financial-resource-risks" class="nav-link" data-scroll-target="#financial-resource-risks">Financial Resource Risks</a></li>
+  <li><a href="#regulatory-and-partnership-risks" id="toc-regulatory-and-partnership-risks" class="nav-link" data-scroll-target="#regulatory-and-partnership-risks">Regulatory and Partnership Risks</a></li>
+  <li><a href="#risk-monitoring-and-reporting" id="toc-risk-monitoring-and-reporting" class="nav-link" data-scroll-target="#risk-monitoring-and-reporting">Risk Monitoring and Reporting</a></li>
+  </ul></li>
+  </ul>
+</nav>
+</div>
+<div id="quarto-margin-sidebar" class="sidebar margin-sidebar zindex-bottom">
+</div>
+<main class="content quarto-banner-title-block column-page-right" id="quarto-document-content">
+
+
+
+  
+
+
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./images/robot-image.jpg" class="lightbox" data-gallery="quarto-lightbox-gallery-1" title="Artistic Representation of CompanionBot"><img src="./images/robot-image.jpg" class="img-fluid figure-img" alt="Artistic Representation of CompanionBot"></a></p>
+<figcaption>Artistic Representation of CompanionBot</figcaption>
+</figure>
+</div>
+<section id="companionbot-system-definition-and-super-characterization" class="level1">
+<h1>1. CompanionBot: System Definition and Super-Characterization</h1>
+<section id="purpose-of-the-system" class="level2">
+<h2 class="anchored" data-anchor-id="purpose-of-the-system">Purpose of the System</h2>
+<p>CompanionBot is an AI-driven digital companion designed to enhance the quality of life for seniors by addressing several critical challenges in elderly care:</p>
+<ul>
+<li><strong>Social Isolation and Loneliness:</strong> Providing consistent companionship and facilitating connections with family, friends, and peer communities.</li>
+<li><strong>Health Management Complexity:</strong> Offering structured assistance with medication adherence, health monitoring, and wellness activities.</li>
+<li><strong>Cognitive Engagement:</strong> Delivering personalized mental stimulation to maintain cognitive function and prevent decline.</li>
+<li><strong>Technology Bridge:</strong> Serving as an accessible gateway between seniors, their families, and modern digital technologies.</li>
+</ul>
+<p>The system aims to complement, not replace, human care by providing 24/7 availability, consistent interaction quality, and personalized support tailored to individual user needs and preferences.</p>
+</section>
+<section id="what-the-system-will-do" class="level2">
+<h2 class="anchored" data-anchor-id="what-the-system-will-do">What the System Will Do</h2>
+<section id="core-functionalities" class="level3">
+<h3 class="anchored" data-anchor-id="core-functionalities">Core Functionalities</h3>
+<section id="social-connection-module" class="level4">
+<h4 class="anchored" data-anchor-id="social-connection-module">Social Connection Module</h4>
+<ul>
+<li>Facilitate video calls with family members and friends through simplified interfaces.</li>
+<li>Enable photo sharing and digital album creation for memory preservation.</li>
+<li>Coordinate group activities with other CompanionBot users (virtual bingo, book clubs, discussion groups).</li>
+<li>Provide daily conversational engagement with natural language processing and through a Large Language Model (LLM) capable of understanding user context and emotional tone.</li>
+</ul>
+</section>
+<section id="health-management-module" class="level4">
+<h4 class="anchored" data-anchor-id="health-management-module">Health Management Module</h4>
+<ul>
+<li>Deliver personalized medication reminders with adherence tracking.</li>
+<li>Guide users through age-appropriate exercise routines and physical activities.</li>
+<li>Monitor vital signs through integrated health devices (blood pressure, pulse oximetry).</li>
+<li>Facilitate meditation and relaxation sessions for mental wellness.</li>
+<li>Track symptoms and maintain health journals for healthcare provider communication.</li>
+<li>Provide hydration and nutrition reminders based on individual health needs.</li>
+</ul>
+</section>
+<section id="cognitive-engagement-module" class="level4">
+<h4 class="anchored" data-anchor-id="cognitive-engagement-module">Cognitive Engagement Module</h4>
+<ul>
+<li>Offer adaptive brain games and puzzles tailored to user cognitive ability.</li>
+<li>Engage in current events discussions and news updates.</li>
+<li>Provide virtual travel experiences and cultural exploration.</li>
+<li>Support music appreciation activities and personalized playlists.</li>
+<li>Enable creative activities including poetry composition.</li>
+</ul>
+</section>
+<section id="smart-integration-module" class="level4">
+<h4 class="anchored" data-anchor-id="smart-integration-module">Smart Integration Module</h4>
+<ul>
+<li>Control compatible smart home devices through voice commands.</li>
+<li>Provide contextual awareness of home environment for safety monitoring.</li>
+<li>Integrate with existing healthcare systems for seamless care coordination.</li>
+<li>Support telehealth session facilitation and technical assistance.</li>
+</ul>
+</section>
+</section>
+<section id="advanced-ai-capabilities" class="level3">
+<h3 class="anchored" data-anchor-id="advanced-ai-capabilities">Advanced AI Capabilities</h3>
+<ul>
+<li><strong>LLM-Powered Personalized Learning:</strong> Integrates a Large Language Model to support flexible, natural, and emotionally aware dialogue. The LLM remembers user preferences, adapts interaction patterns, and provides personalized suggestions.</li>
+<li><strong>Proactive Engagement:</strong> Detects loneliness indicators and initiates appropriate interventions.</li>
+<li><strong>Emotion Recognition:</strong> Analyzes vocal patterns and facial expressions to provide empathetic responses.</li>
+<li><strong>Context Awareness:</strong> Understands user routines, preferences, and environmental factors for intelligent assistance.</li>
+<li><strong>Multi-modal Interaction:</strong> Supports voice, touch, gesture, and visual communication modalities.</li>
+</ul>
+</section>
+</section>
+<section id="how-users-will-interact-with-the-system" class="level2">
+<h2 class="anchored" data-anchor-id="how-users-will-interact-with-the-system">How Users Will Interact with the System</h2>
+<section id="primary-interaction-modalities" class="level3">
+<h3 class="anchored" data-anchor-id="primary-interaction-modalities">Primary Interaction Modalities</h3>
+<section id="voice-interaction" class="level4">
+<h4 class="anchored" data-anchor-id="voice-interaction">Voice Interaction</h4>
+<ul>
+<li>Natural language conversation capabilities powered by an LLM, enabling contextual memory, multilingual support, and emotionally adaptive interaction.</li>
+<li>Voice commands for system control and activity initiation.</li>
+<li>Adjustable speech rate and volume for hearing accessibility.</li>
+<li>Multi-language support for diverse user populations.</li>
+</ul>
+</section>
+<section id="touch-interface" class="level4">
+<h4 class="anchored" data-anchor-id="touch-interface">Touch Interface</h4>
+<ul>
+<li>Large, high-contrast buttons on detachable tablet display.</li>
+<li>Simplified navigation with minimal cognitive load.</li>
+<li>Haptic feedback for confirmation of actions.</li>
+<li>Customizable interface layouts based on user abilities.</li>
+</ul>
+</section>
+<section id="visual-interaction" class="level4">
+<h4 class="anchored" data-anchor-id="visual-interaction">Visual Interaction</h4>
+<ul>
+<li>Expressive robotic head with emotional LED indicators.</li>
+<li>Video calling capabilities through integrated camera systems.</li>
+<li>Photo sharing and viewing on high-resolution displays.</li>
+<li>Gesture recognition for users with speech limitations.</li>
+</ul>
+</section>
+<section id="physical-interaction" class="level4">
+<h4 class="anchored" data-anchor-id="physical-interaction">Physical Interaction</h4>
+<ul>
+<li>Motion sensors for presence detection and automatic engagement.</li>
+<li>Emergency alert pendant integration for safety monitoring.</li>
+<li>Health device connectivity for seamless data collection.</li>
+<li>Smart home device control through centralized hub.</li>
+</ul>
+</section>
+</section>
+<section id="accessibility-features" class="level3">
+<h3 class="anchored" data-anchor-id="accessibility-features">Accessibility Features</h3>
+<p>The system accommodates a wide range of user needs:</p>
+<ul>
+<li>For visual impairments: high-contrast displays, large-text options, and voice guidance.</li>
+<li>For hearing challenges: visual indicators, adjustable volume controls, and text-to-speech alternatives.</li>
+<li>For motor difficulties: multiple input methods, simplified gestures, and voice-operated controls.</li>
+<li>For cognitive assistance: consistent interfaces, clear instructions, and patient repetition.</li>
+</ul>
+</section>
+</section>
+<section id="who-will-use-the-system" class="level2">
+<h2 class="anchored" data-anchor-id="who-will-use-the-system">Who Will Use the System</h2>
+<section id="primary-users" class="level3">
+<h3 class="anchored" data-anchor-id="primary-users">Primary Users</h3>
+<section id="independent-seniors" class="level4">
+<h4 class="anchored" data-anchor-id="independent-seniors">Independent Seniors</h4>
+<ul>
+<li>Living independently in their own homes.</li>
+<li>Experiencing mild to moderate social isolation.</li>
+<li>Managing multiple medications and health conditions.</li>
+<li>Seeking to maintain cognitive function and social connections.</li>
+</ul>
+</section>
+<section id="seniors-with-mild-cognitive-decline" class="level4">
+<h4 class="anchored" data-anchor-id="seniors-with-mild-cognitive-decline">Seniors with Mild Cognitive Decline</h4>
+<ul>
+<li>Early-stage dementia or mild cognitive impairment.</li>
+<li>Requiring structured daily routines and medication reminders.</li>
+<li>Benefiting from consistent social interaction and mental stimulation.</li>
+<li>Need for simplified, patient technology interfaces.</li>
+</ul>
+</section>
+<section id="socially-isolated-seniors" class="level4">
+<h4 class="anchored" data-anchor-id="socially-isolated-seniors">Socially Isolated Seniors</h4>
+<ul>
+<li>Limited family contact or geographic separation from loved ones.</li>
+<li>Reduced mobility affecting social activities.</li>
+<li>Recent life transitions (widowhood, retirement, relocation).</li>
+<li>Seeking meaningful social connections and daily structure.</li>
+</ul>
+</section>
+</section>
+<section id="secondary-users" class="level3">
+<h3 class="anchored" data-anchor-id="secondary-users">Secondary Users</h3>
+<section id="family-members-and-caregivers" class="level4">
+<h4 class="anchored" data-anchor-id="family-members-and-caregivers">Family Members and Caregivers</h4>
+<ul>
+<li>Adult children monitoring elderly parents’ wellbeing.</li>
+<li>Professional caregivers coordinating care plans.</li>
+<li>Healthcare providers accessing health data and communication.</li>
+<li>Social workers and community health coordinators.</li>
+</ul>
+</section>
+<section id="healthcare-professionals" class="level4">
+<h4 class="anchored" data-anchor-id="healthcare-professionals">Healthcare Professionals</h4>
+<ul>
+<li>Primary care physicians monitoring patient adherence and health metrics.</li>
+<li>Specialists requiring regular health data collection.</li>
+<li>Mental health professionals tracking mood and cognitive function.</li>
+<li>Pharmacists supporting medication management.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="constraints-privacy-security-ethics" class="level2">
+<h2 class="anchored" data-anchor-id="constraints-privacy-security-ethics">Constraints (Privacy, Security, Ethics)</h2>
+<section id="privacy-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="privacy-constraints">Privacy Constraints</h3>
+<section id="data-collection-limitations" class="level4">
+<h4 class="anchored" data-anchor-id="data-collection-limitations">Data Collection Limitations</h4>
+<ul>
+<li>Explicit user consent required for all data collection activities.</li>
+<li>Minimal data collection principle: only essential information gathered.</li>
+<li>Local processing prioritized to reduce cloud data transmission.</li>
+<li>Clear data retention policies with automatic deletion schedules.</li>
+</ul>
+</section>
+<section id="information-sharing-controls" class="level4">
+<h4 class="anchored" data-anchor-id="information-sharing-controls">Information Sharing Controls</h4>
+<ul>
+<li>Granular permission settings for family access to health information.</li>
+<li>Healthcare provider data sharing requires explicit medical consent.</li>
+<li>Emergency protocol data sharing limited to life-threatening situations.</li>
+<li>User ability to review and delete personal data at any time.</li>
+</ul>
+</section>
+</section>
+<section id="security-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="security-constraints">Security Constraints</h3>
+<section id="technical-security-requirements" class="level4">
+<h4 class="anchored" data-anchor-id="technical-security-requirements">Technical Security Requirements</h4>
+<ul>
+<li>End-to-end encryption for all data transmission.</li>
+<li>Secure authentication protocols for family and caregiver access.</li>
+<li>Regular security updates and vulnerability patching.</li>
+<li>Physical device security features to prevent tampering.</li>
+</ul>
+</section>
+<section id="data-protection-standards" class="level4">
+<h4 class="anchored" data-anchor-id="data-protection-standards">Data Protection Standards</h4>
+<ul>
+<li>HIPAA compliance for health-related information.</li>
+<li>SOC 2 Type II certification for cloud infrastructure.</li>
+<li>Regular third-party security audits and penetration testing.</li>
+<li>Incident response procedures for data breaches.</li>
+<li>Backup and disaster recovery protocols.</li>
+</ul>
+</section>
+</section>
+<section id="ethical-constraints" class="level3">
+<h3 class="anchored" data-anchor-id="ethical-constraints">Ethical Constraints</h3>
+<section id="autonomy-and-dignity" class="level4">
+<h4 class="anchored" data-anchor-id="autonomy-and-dignity">Autonomy and Dignity</h4>
+<ul>
+<li>Preservation of user independence and decision-making authority.</li>
+<li>Transparent disclosure of AI capabilities and limitations.</li>
+<li>Respect for cultural and religious preferences in care approaches.</li>
+<li>User control over AI personality and interaction styles.</li>
+</ul>
+</section>
+<section id="deception-and-authenticity" class="level4">
+<h4 class="anchored" data-anchor-id="deception-and-authenticity">Deception and Authenticity</h4>
+<ul>
+<li>Clear identification of AI vs.&nbsp;human interactions.</li>
+<li>Honest representation of AI emotional capabilities.</li>
+<li>Avoidance of false promises regarding health outcomes.</li>
+<li>Transparent explanation of data usage and AI decision-making.</li>
+<li>Respect for user emotional investment in AI relationships.</li>
+</ul>
+</section>
+<section id="equity-and-accessibility" class="level4">
+<h4 class="anchored" data-anchor-id="equity-and-accessibility">Equity and Accessibility</h4>
+<ul>
+<li>Affordable pricing models to prevent socioeconomic exclusion.</li>
+<li>Support for users with various disability levels.</li>
+<li>Multiple language support for diverse user populations.</li>
+<li>Training and support resources for technology adoption.</li>
+</ul>
+</section>
+<section id="care-integration-ethics" class="level4">
+<h4 class="anchored" data-anchor-id="care-integration-ethics">Care Integration Ethics</h4>
+<ul>
+<li>Complement, not replace, human care relationships.</li>
+<li>Support for maintaining family and social connections.</li>
+<li>Integration with existing healthcare without disruption.</li>
+<li>Respect for professional caregiver roles and expertise.</li>
+<li>Transparency with healthcare providers about AI involvement.</li>
+</ul>
+</section>
+</section>
+</section>
+<section id="scientific-reasoning-and-research-foundation" class="level2">
+<h2 class="anchored" data-anchor-id="scientific-reasoning-and-research-foundation">Scientific Reasoning and Research Foundation</h2>
+<section id="loneliness-and-social-isolation-research" class="level3">
+<h3 class="anchored" data-anchor-id="loneliness-and-social-isolation-research">Loneliness and Social Isolation Research</h3>
+<p>The development of CompanionBot is grounded in extensive research demonstrating the severe health impacts of loneliness in older adults. Loneliness is a common problem in older adults and contributes to poor health, with studies showing increased risks of depression, cognitive decline, and mortality. Recent meta-analyses have demonstrated that social robot interventions had significant positive effects on decreasing depression and loneliness with large effect sizes.</p>
+<p>Research specifically examining social robots for elderly care has shown promising results. A comprehensive scoping review found that social robots could tackle both emotional and social loneliness in assisted living by empowering people to engage in different forms of social interaction inside and outside the facility. Additionally, studies on existing companion robots like ElliQ have provided valuable insights into effective design principles and user acceptance patterns.</p>
+<p><strong>Key Research Citations:</strong></p>
+<ul>
+<li>Norina Gasteiger et al.&nbsp;(2021). “Friends from the Future: A Scoping Review of Research into Robots and Computer Agents to Combat Loneliness in Older People.” <em>PMC</em></li>
+<li>Yen et al.&nbsp;(2024). “The Effect of Social Robots on Depression and Loneliness for Older Residents in Long-Term Care Facilities: A Meta-Analysis of Randomized Controlled Trials.” <em>PubMed</em></li>
+<li>Pirhonen et al.&nbsp;(2020). “Can robots tackle late-life loneliness? Scanning of future opportunities and challenges in assisted living facilities.” <em>ScienceDirect</em></li>
+</ul>
+</section>
+<section id="medication-management-and-health-compliance" class="level3">
+<h3 class="anchored" data-anchor-id="medication-management-and-health-compliance">Medication Management and Health Compliance</h3>
+<p>Research consistently demonstrates medication non-adherence as a critical challenge in elderly care. Studies show that medication non-adherence is a common problem with a high risk for severe consequences, which can jeopardize older adults’ health and independence. Robotic interventions have shown significant promise, with research indicating that using a robot for medication management had a decreasing effect on home care professionals’ use of working time while improving health outcomes.</p>
+<p>Clinical trials of robotic medication management systems have demonstrated safety and usability, with all patients and 96% of nurses reporting the device was easy to use in pilot studies. Advanced conversation-based systems using companion robots have been successfully implemented and tested with positive user acceptance rates.</p>
+<p><strong>Key Research Citations:</strong></p>
+<ul>
+<li>Prakash et al.&nbsp;(2013). “Older Adults’ Medication Management in the Home: How can Robots Help?” <em>PMC</em></li>
+<li>Kajander-Unkuri et al.&nbsp;(2023). “Effect of robot for medication management on home care professionals’ use of working time in older people’s home care: a non-randomized controlled clinical trial.” <em>PMC</em></li>
+<li>Su et al.&nbsp;(2021). “Conversation-Based Medication Management System for Older Adults Using a Companion Robot and Cloud.” <em>IEEE</em></li>
+</ul>
+</section>
+<section id="cognitive-engagement-and-mental-health" class="level3">
+<h3 class="anchored" data-anchor-id="cognitive-engagement-and-mental-health">Cognitive Engagement and Mental Health</h3>
+<p>Research supports the importance of cognitive stimulation in maintaining mental function among older adults. Studies examining companion robots have found that companion robots should be accepted in the long-term by older adults with mild cognitive decline in order to increase their use and provide company, reduce loneliness, as well as to open the possibility of using them for therapy via social interaction.</p>
+<p>Recent research has emphasized the importance of personalized, adaptive systems that can evolve with user needs. Older adults’ expectations of conversational companionship might substantially differ from what current technologies can achieve, highlighting the need for advanced AI systems with sophisticated natural language processing and emotional intelligence capabilities.</p>
+<p><strong>Key Research Citations:</strong></p>
+<ul>
+<li>Figueroa et al.&nbsp;(2023). “Social robot for older adults with cognitive decline: a preliminary trial.” <em>Frontiers in Robotics and AI</em></li>
+<li>Irfan et al.&nbsp;(2024). “Recommendations for designing conversational companion robots with older adults through foundation models.” <em>Frontiers in Robotics and AI</em></li>
+<li>Tan et al.&nbsp;(2024). “Improving the Social Well-Being of Single Older Adults Using the LOVOT Social Robot: Qualitative Phenomenological Study” <em>JMIR Human Factors</em></li>
+</ul>
+</section>
+</section>
+</section>
+<section id="stakeholder-analysis-and-decision-making-framework" class="level1">
+<h1>2. Stakeholder Analysis and Decision-Making Framework</h1>
+<section id="primary-stakeholders" class="level2">
+<h2 class="anchored" data-anchor-id="primary-stakeholders">Primary Stakeholders</h2>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 9%">
+<col style="width: 29%">
+<col style="width: 26%">
+<col style="width: 33%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Stakeholder</th>
+<th>Primary Interests</th>
+<th>Influence</th>
+<th>Expectations</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Elderly Users</td>
+<td>Ease of use, privacy, companionship, health monitoring, dignity, social connection</td>
+<td>High – Direct users whose adoption and satisfaction determine project success</td>
+<td>Intuitive interface, reliable functionality, respectful interaction, privacy protection</td>
+</tr>
+<tr class="even">
+<td>Family Members</td>
+<td>Safety alerts, engagement updates, photo sharing, crisis notifications, wellbeing</td>
+<td>High – Often primary decision-makers for purchase and setup, ongoing support</td>
+<td>Reliable alerts, easy communication, health insights, low maintenance requirements</td>
+</tr>
+<tr class="odd">
+<td>Healthcare Providers</td>
+<td>Reliable medical alerts, actionable data, EHR integration, reduced false positives</td>
+<td>Medium-High – May recommend or discourage use based on perceived usefulness</td>
+<td>Accurate health data, integration with existing systems, evidence-based interventions</td>
+</tr>
+<tr class="even">
+<td>NGOs (AARP, WHO Ageing)</td>
+<td>Accessibility, affordability, digital literacy support, ethical AI use</td>
+<td>Not specified</td>
+<td>Not specified</td>
+</tr>
+<tr class="odd">
+<td>Investors</td>
+<td>Market scalability, ROI, regulatory compliance, user adoption, revenue</td>
+<td>High – Control over budget, resources, strategic direction</td>
+<td>Viable product, clear market differentiation, positive adoption metrics, ROI achievement</td>
+</tr>
+<tr class="even">
+<td>Regulators</td>
+<td>HIPAA/GDPR/ADA compliance, safety certifications, data sovereignty, ethical AI</td>
+<td>Very High – Can approve or block deployment based on compliance assessment</td>
+<td>Adherence to regulations, transparent data practices, ethical AI implementation</td>
+</tr>
+<tr class="odd">
+<td>Caregivers</td>
+<td>Usability insights, behavioral trend reports, workload reduction, wellbeing</td>
+<td>High – Often primary decision-makers for purchase and setup, ongoing support</td>
+<td>Reliable alerts, easy communication, health insights, low maintenance requirements</td>
+</tr>
+<tr class="even">
+<td>Insurance providers</td>
+<td>Risk mitigation, cost reduction, and preventive care</td>
+<td>Not specified</td>
+<td>Not specified</td>
+</tr>
+<tr class="odd">
+<td>Development Team</td>
+<td>Creating effective, innovative solutions, technical feasibility, professional growth</td>
+<td>High – Direct impact on product capabilities, quality, and timeline</td>
+<td>Clear requirements, realistic timelines, necessary resources, technical autonomy</td>
+</tr>
+<tr class="even">
+<td>Technology Partners</td>
+<td>Partnership success, technology integration, market expansion</td>
+<td>Medium – Impact on technical capabilities and integration success</td>
+<td>Clear integration requirements, technical support, revenue sharing agreements</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="decision-making-framework" class="level2">
+<h2 class="anchored" data-anchor-id="decision-making-framework">Decision-Making Framework</h2>
+<section id="decision-authority-matrix" class="level3">
+<h3 class="anchored" data-anchor-id="decision-authority-matrix">Decision Authority Matrix</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 23%">
+<col style="width: 23%">
+<col style="width: 32%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Decision Type</th>
+<th>Primary Decision Maker</th>
+<th>Required Approvals</th>
+<th>Consultation Required</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Strategic Direction</td>
+<td>Business Stakeholders</td>
+<td>Board/Investors</td>
+<td>All Primary Stakeholders</td>
+</tr>
+<tr class="even">
+<td>Product Features</td>
+<td>Product Owner</td>
+<td>Senior Users, Healthcare</td>
+<td>Development Team, Family Caregivers</td>
+</tr>
+<tr class="odd">
+<td>Technical Architecture</td>
+<td>Technical Lead</td>
+<td>Business Stakeholders</td>
+<td>Development Team, Technology Partners</td>
+</tr>
+<tr class="even">
+<td>User Interface Design</td>
+<td>UX Lead</td>
+<td>Senior Users, NGOs, Family</td>
+<td>Family, Caregivers, NGOs</td>
+</tr>
+<tr class="odd">
+<td>Health Features</td>
+<td>Healthcare Advisory Board</td>
+<td>Regulatory Bodies</td>
+<td>Healthcare Providers, Senior Users</td>
+</tr>
+<tr class="even">
+<td>Privacy/Security</td>
+<td>Privacy Officer</td>
+<td>Legal Team, Regulatory</td>
+<td>All Stakeholders</td>
+</tr>
+<tr class="odd">
+<td>Budget Allocation</td>
+<td>Financial Stakeholders</td>
+<td>Business Leadership</td>
+<td>Project Management Team</td>
+</tr>
+<tr class="even">
+<td>Timeline/Milestones</td>
+<td>Project Manager</td>
+<td>Business Stakeholders</td>
+<td>Development Team, Key Stakeholders</td>
+</tr>
+<tr class="odd">
+<td>Vendor Selection</td>
+<td>Procurement Lead</td>
+<td>Technical Lead, Financial</td>
+<td>Development Team</td>
+</tr>
+<tr class="even">
+<td>Go-to-Market Strategy</td>
+<td>Marketing Lead</td>
+<td>Business Stakeholders</td>
+<td>Healthcare Providers, Family, Caregivers</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="decision-making-process" class="level3">
+<h3 class="anchored" data-anchor-id="decision-making-process">Decision-Making Process</h3>
+<section id="level-1-operational-decisions-daily-development" class="level4">
+<h4 class="anchored" data-anchor-id="level-1-operational-decisions-daily-development">Level 1: Operational Decisions (Daily Development)</h4>
+<ul>
+<li><strong>Authority:</strong> Development Team Leads</li>
+<li><strong>Process:</strong> Agile methodology, daily standups, sprint planning</li>
+<li><strong>Timeline:</strong> Immediate to 2 weeks</li>
+<li><strong>Documentation:</strong> Sprint logs, technical documentation</li>
+<li><strong>Review:</strong> Weekly team retrospectives</li>
+</ul>
+</section>
+<section id="level-2-tactical-decisions-feature-and-design" class="level4">
+<h4 class="anchored" data-anchor-id="level-2-tactical-decisions-feature-and-design">Level 2: Tactical Decisions (Feature and Design)</h4>
+<ul>
+<li><strong>Authority:</strong> Product Owner with Stakeholder Input</li>
+<li><strong>Process:</strong>
+<ol type="1">
+<li>Stakeholder consultation (1 week)</li>
+<li>Impact analysis (3-5 days)</li>
+<li>Decision documentation (2 days)</li>
+<li>Implementation planning (1 week)</li>
+</ol></li>
+<li><strong>Timeline:</strong> 2-4 weeks</li>
+<li><strong>Documentation:</strong> Decision records, impact assessments, implementation plans</li>
+</ul>
+</section>
+<section id="level-3-strategic-decisions-direction-and-investment" class="level4">
+<h4 class="anchored" data-anchor-id="level-3-strategic-decisions-direction-and-investment">Level 3: Strategic Decisions (Direction and Investment)</h4>
+<ul>
+<li><strong>Authority:</strong> Business Stakeholders with Board Approval</li>
+<li><strong>Process:</strong>
+<ol type="1">
+<li>Comprehensive stakeholder analysis (2-3 weeks)</li>
+<li>Business case development (1-2 weeks)</li>
+<li>Risk assessment (1 week)</li>
+<li>Board presentation and approval (1-2 weeks)</li>
+<li>Communication and implementation planning (1 week)</li>
+</ol></li>
+<li><strong>Timeline:</strong> 6-10 weeks</li>
+<li><strong>Documentation:</strong> Business cases, risk assessments, board minutes, communication plans</li>
+</ul>
+</section>
+</section>
+<section id="decision-making-philosophy" class="level3">
+<h3 class="anchored" data-anchor-id="decision-making-philosophy">Decision-Making Philosophy</h3>
+<blockquote class="blockquote">
+<p>At the core of our development philosophy is the principle that stakeholders should not merely be consulted—they should actively shape the product’s evolution. To achieve this, we have designed a participatory framework that embeds stakeholders into the decision-making process at every stage, ensuring their needs drive priorities while maintaining agility and technical feasibility.</p>
+</blockquote>
+<section id="co-design-councils-the-heart-of-governance" class="level4">
+<h4 class="anchored" data-anchor-id="co-design-councils-the-heart-of-governance">Co-Design Councils: The Heart of Governance</h4>
+<p>A rotating council of elderly users, family members, and NGO representatives holds formal influence over product direction. Unlike traditional advisory boards, this group has veto power on critical UX decisions—such as interface accessibility or privacy controls—and scores proposed features to shape the development backlog. For example, when early testing revealed that video calls introduced complexity for users with limited dexterity, the council voted overwhelmingly to prioritize voice interaction refinements first. This structure ensures that those most affected by the robot’s design have measurable authority, not just symbolic input.</p>
+</section>
+<section id="continuous-feedback-loops-powered-by-ai" class="level4">
+<h4 class="anchored" data-anchor-id="continuous-feedback-loops-powered-by-ai">Continuous Feedback Loops, Powered by AI</h4>
+<p>To avoid stagnation between council meetings, real-time feedback flows through AI-curated channels. In-product prompts (e.g., “Was this reminder helpful?”) and discussions are analyzed by LLMs to distill sentiment trends and emergent needs. These insights trigger automated A/B tests—like adjusting game difficulty or reminder frequency—while major patterns are presented to the council for deliberation. If, for example, beta users expressed frustration with medication alerts, sentiment analysis would reveal a demand for customizable schedules, leading to a low-code interface that families could tailor remotely.</p>
+</section>
+<section id="radical-transparency-for-accountability" class="level4">
+<h4 class="anchored" data-anchor-id="radical-transparency-for-accountability">Radical Transparency for Accountability</h4>
+<p>Trust is maintained through public visibility into how stakeholder input translates into action. A live roadmap portal displays feature requests, voting results, and implementation status, while quarterly transparency reports detail how pilot data influenced decisions. Regulatory and healthcare partners receive dedicated audit trails, proving compliance with co-designed protocols. After caregivers reported that fall-detection false alarms caused undue stress, the engineering team published a breakdown of algorithm adjustments and invited stakeholders to retest the solution.</p>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./images/diagram-shlomo.png" class="lightbox" data-gallery="quarto-lightbox-gallery-2" title="Diagram of the Decision-Making Process"><img src="./images/diagram-shlomo.png" class="img-fluid figure-img" alt="Diagram of the Decision-Making Process"></a></p>
+<figcaption>Diagram of the Decision-Making Process</figcaption>
+</figure>
+</div>
+</section>
+</section>
+</section>
+</section>
+<section id="flowchartsystem-architecture-diagram" class="level1">
+<h1>3. Flowchart/System Architecture Diagram</h1>
+<div class="quarto-figure quarto-figure-center">
+<figure class="figure">
+<p><a href="./images/companionbot_system_architecture.png" class="lightbox" data-gallery="quarto-lightbox-gallery-3" title="System Architecture Diagram in a C4 Standardized Format"><img src="./images/companionbot_system_architecture.png" class="img-fluid figure-img" alt="System Architecture Diagram in a C4 Standardized Format"></a></p>
+<figcaption>System Architecture Diagram in a C4 Standardized Format</figcaption>
+</figure>
+</div>
+</section>
+<section id="resources-required-for-system-development" class="level1">
+<h1>4. Resources Required for System Development</h1>
+<p>Launching CompanionBot from prototype to full-scale deployment requires a coordinated combination of human capital, technical tools, infrastructure, and strategic partnerships. This chapter outlines the essential resources—tangible and intangible—necessary for a successful initial rollout.</p>
+<section id="human-resources" class="level2">
+<h2 class="anchored" data-anchor-id="human-resources">1. Human Resources</h2>
+<section id="product-team" class="level3">
+<h3 class="anchored" data-anchor-id="product-team">Product Team</h3>
+<ul>
+<li>Product Owner / Product Manager – Prioritizes features and aligns user needs with technical capabilities.</li>
+<li>UX/UI Designer – Specializes in interfaces tailored for elderly users and individuals with cognitive impairments.</li>
+<li>User Researcher – Gathers insights through interviews, usability testing, and interaction analytics.</li>
+<li>Data Analyst – Analyzes behavioral data, conducts A/B testing, and generates hypotheses for product improvement.</li>
+<li>Stakeholder Liaison – Communicates with user councils, medical partners, families, and social workers.</li>
+</ul>
+</section>
+<section id="development-team" class="level3">
+<h3 class="anchored" data-anchor-id="development-team">Development Team</h3>
+<ul>
+<li>AI/ML Engineers — Implement emotion recognition, personalization, NLP, and adaptive learning algorithms.</li>
+<li>Data Scientists — Analyze real-world feedback and fine-tune AI behavior and decision-making logic.</li>
+<li>Software Developers — Skilled in Python, C, C++, Go, Rust, and embedded systems for backend integration and frontend interface.</li>
+<li>Hardware Engineers — Finalize robot shell, mobility components, and smart home integration features.</li>
+<li>QA Engineers — Test edge cases, accessibility scenarios, and interaction reliability.</li>
+</ul>
+</section>
+<section id="specialized-roles" class="level3">
+<h3 class="anchored" data-anchor-id="specialized-roles">Specialized Roles</h3>
+<ul>
+<li>Gerontologists &amp; Geriatric Psychologists — Guide interaction models and validate mental health features.</li>
+<li>Clinical Advisors (MDs, RNs) — Verify medical protocol compliance (medication reminders, vital tracking).</li>
+<li>Speech-Language Pathologists — Evaluate voice interface clarity and communication design.</li>
+<li>Ethics and Privacy Consultants — Ensure adherence to HIPAA, GDPR, and ethical AI practices.</li>
+<li>Community Engagement Coordinators — Onboard elderly users, provide training, and gather feedback.</li>
+</ul>
+</section>
+<section id="support-operations" class="level3">
+<h3 class="anchored" data-anchor-id="support-operations">Support &amp; Operations</h3>
+<ul>
+<li>Customer Support Staff — Trained in elder tech use and empathetic communication.</li>
+<li>Sales and Partnership Managers — Drive institutional and healthcare adoption.</li>
+<li>Training Specialists — For family members and caregivers.</li>
+</ul>
+</section>
+</section>
+<section id="technical-and-digital-infrastructure" class="level2">
+<h2 class="anchored" data-anchor-id="technical-and-digital-infrastructure">2. Technical and Digital Infrastructure</h2>
+<p><strong>Hardware Components</strong></p>
+<ul>
+<li>Final production version of CompanionBot device with:
+<ul>
+<li>High-resolution screen and wide-angle camera</li>
+<li>Emotion-expressive LED facial interface</li>
+<li>Microphone arrays with noise cancellation</li>
+<li>Speakers with adjustable volume and voice clarity optimization</li>
+<li>Embedded sensors (touch, motion, temperature, fall detection)</li>
+<li>Long-life rechargeable battery with safety certification</li>
+<li>Smart home integration modules (Wi-Fi, Bluetooth, Zigbee, etc.)</li>
+<li>Telehealth peripherals integration (e.g., BP monitor, pulse oximeter, thermometer)</li>
+</ul></li>
+</ul>
+<p><strong>Software Platforms</strong></p>
+<ul>
+<li>Natural Language Processing Engine (transformer-based)</li>
+<li>Emotion Recognition Framework (computer vision and vocal analysis)</li>
+<li>Behavioral Analytics Engine (real-time analysis of routines, habits, and engagement trends)</li>
+<li>System OS (lightweight, secure, modular, OTA updates)</li>
+<li>User Interface (custom elderly-friendly launcher, customizable layouts)</li>
+<li>Data Sync &amp; Cloud Services (secure AWS hosting with local fallback)</li>
+</ul>
+<p><strong>Data &amp; Integration Tools</strong></p>
+<ul>
+<li>EHR/EMR Interoperability API layer (FHIR-compliant)</li>
+<li>Caregiver dashboard (web and mobile)</li>
+<li>Remote configuration and analytics tools for families</li>
+<li>Voice control for accessibility</li>
+</ul>
+</section>
+<section id="organizational-and-business-resources" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-and-business-resources">3. Organizational and Business Resources</h2>
+<ul>
+<li>CRM and customer support platforms</li>
+<li>Training modules for users and caregivers (digital + in-person)</li>
+<li>Pilot program toolkit (onboarding, usage guides, evaluation metrics)</li>
+</ul>
+<p><strong>Marketing &amp; Outreach</strong></p>
+<ul>
+<li>Educational content explaining AI and robot ethics</li>
+<li>Community events, webinars, and co-design workshops</li>
+<li>Partnerships with elder care NGOs, clinics, and municipalities</li>
+</ul>
+</section>
+<section id="financial-resources" class="level2">
+<h2 class="anchored" data-anchor-id="financial-resources">4. Financial Resources</h2>
+<p><strong>Initial Capital</strong></p>
+<p>Seed or Series A funding to cover:</p>
+<ul>
+<li>Manufacturing (pilot batch)</li>
+<li>Team salaries (12–18 months runway)</li>
+<li>Regulatory and certification costs</li>
+<li>Legal, insurance, and compliance auditing</li>
+<li>Marketing and community onboarding</li>
+<li>Infrastructure (cloud, devices, integration licenses)</li>
+</ul>
+<p><strong>Ongoing Funding Strategy</strong></p>
+<ul>
+<li>Grants from public health and aging-focused institutions</li>
+<li>Strategic corporate partnerships (e.g., smart home vendors, insurers)</li>
+<li>Subscription revenue and B2B sales (senior care homes, health systems)</li>
+</ul>
+</section>
+<section id="legal-and-compliance-resources" class="level2">
+<h2 class="anchored" data-anchor-id="legal-and-compliance-resources">5. Legal and Compliance Resources</h2>
+<ul>
+<li>Accessibility audit and WCAG 2.1 testing tools</li>
+<li>Regulatory consultant team for device certifications (FDA/CE if applicable)</li>
+<li>Consent management frameworks for families and healthcare providers</li>
+</ul>
+</section>
+<section id="launch-ready-metrics-and-kpis" class="level2">
+<h2 class="anchored" data-anchor-id="launch-ready-metrics-and-kpis">6. Launch-Ready Metrics and KPIs</h2>
+<p>To evaluate resource adequacy and deployment readiness, the following benchmarks must be met:</p>
+<ul>
+<li>95%+ success rate in daily use test scenarios with seniors</li>
+<li>90% of Co-Design Council UX priorities implemented</li>
+<li>100% of privacy and regulatory protocols certified</li>
+<li>Functional integration with at least 3 EHR systems</li>
+<li>Scalable cloud infrastructure deployed in 2+ regions</li>
+<li>Fully trained customer support and caregiver enablement teams</li>
+<li>Positive sentiment in &gt;80% of beta tester feedback sessions</li>
+</ul>
+<blockquote class="blockquote">
+<p>A successful CompanionBot launch requires more than just technology — it requires a full ecosystem of specialized expertise, empathetic design, trusted infrastructure, and inclusive partnerships. By ensuring these resources are secured and aligned with the system’s mission, we can deliver not just a product, but a meaningful support system for the aging population.</p>
+</blockquote>
+</section>
+</section>
+<section id="detailed-list-of-tasks-and-required-resources" class="level1">
+<h1>5. Detailed List of Tasks and Required Resources</h1>
+<p>Below is a structured, detailed breakdown of all specific tasks (engineering, design, training, validation, etc.), responsible roles or teams, and crucial resources. Tasks are organized by system components, e.g., conversation UI, health monitoring, emotion recognition, etc., based on the modules and features of the system.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 6%">
+<col style="width: 13%">
+<col style="width: 16%">
+<col style="width: 14%">
+<col style="width: 13%">
+<col style="width: 20%">
+<col style="width: 14%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Task ID</th>
+<th>Task Description</th>
+<th>Responsible Role(s)</th>
+<th>Required Resources</th>
+<th>LLM Contribution</th>
+<th>Impact on User Experience</th>
+<th>Development Phase</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>T1</td>
+<td>Define user scenarios &amp; elderly personas</td>
+<td>UX Designer, Gerontologist</td>
+<td>Stakeholder input, Co-design council feedback</td>
+<td>Not directly involved in this phase, but user data helps fine-tune future prompts and personalization logic.</td>
+<td>Scenarios built here guide how LLM conversations align with real user needs.</td>
+<td>Phase 1</td>
+</tr>
+<tr class="even">
+<td>T2</td>
+<td>Design conversational UI (voice interface)</td>
+<td>UX Designer, Speech Pathologist</td>
+<td>GPT-based LLM, voice SDKs</td>
+<td>Drives natural and context-rich dialogue via fine-tuned LLM</td>
+<td>Allows seniors to hold meaningful daily conversations with the robot</td>
+<td>Phase 2</td>
+</tr>
+<tr class="odd">
+<td>T3</td>
+<td>Develop emotion recognition module</td>
+<td>AI/ML Engineer</td>
+<td>GPU infrastructure, camera, dataset for emotions</td>
+<td>The LLM uses emotional input (voice tone, facial expression, textual sentiment) to adapt its language generation in real-time — expressing empathy, changing tone, or adjusting conversation flow. LLM also helps in labeling or classifying emotional context during post-processing and learning loops.</td>
+<td>Users feel emotionally understood and cared for. The robot’s ability to respond with warmth, support, or cheer based on emotional state builds trust and reduces feelings of loneliness. Emotional alignment is key to senior engagement.</td>
+<td>Phase 2</td>
+</tr>
+<tr class="even">
+<td>T4</td>
+<td>Program medication reminder logic</td>
+<td>Software Developer, MD Advisor</td>
+<td>Medication protocols, NLP engine</td>
+<td>Generates adaptive and polite reminder phrasing using prompt engineering</td>
+<td>Improves medication adherence through trust and tone personalization</td>
+<td>Phase 2</td>
+</tr>
+<tr class="odd">
+<td>T5</td>
+<td>Implement video calling &amp; photo sharing features</td>
+<td>Software Developer, UI Designer</td>
+<td>Camera integration, UI frameworks</td>
+<td>Helps narrate and format photo captions or life stories using natural language</td>
+<td>Assists seniors in building digital memoirs without typing or technical complexity</td>
+<td>Phase 3</td>
+</tr>
+<tr class="even">
+<td>T6</td>
+<td>Build smart home control module</td>
+<td>Embedded System Engineer</td>
+<td>IoT SDKs, Zigbee/Bluetooth modules</td>
+<td>Converts natural spoken commands into smart home actions via voice interface.</td>
+<td>Users feel empowered controlling their home by speaking casually, with no technical knowledge.</td>
+<td>Phase 3</td>
+</tr>
+<tr class="odd">
+<td>T7</td>
+<td>Design and train cognitive games</td>
+<td>AI/ML Engineer, Cognitive Psychologist</td>
+<td>Puzzle DB, training datasets</td>
+<td>Creates or adapts word games, storytelling prompts, quizzes dynamically</td>
+<td>Keeps engagement fresh and tailored to cognitive ability levels</td>
+<td>Phase 3</td>
+</tr>
+<tr class="even">
+<td>T8</td>
+<td>Integrate health sensors (e.g., BP monitor)</td>
+<td>Hardware Engineer, RN/MD</td>
+<td>Health devices, API integration</td>
+<td>Explains health data to the user in understandable language; answers health-related questions conversationally.</td>
+<td>Increases users’ sense of control over their health; reduces confusion or anxiety.</td>
+<td>Phase 3</td>
+</tr>
+<tr class="odd">
+<td>T9</td>
+<td>Perform clinical safety validation</td>
+<td>QA Engineer, Clinical Advisor</td>
+<td>Test environments, elderly beta testers</td>
+<td>N/A</td>
+<td>N/A</td>
+<td>Phase 4</td>
+</tr>
+<tr class="even">
+<td>T10</td>
+<td>Ensure data encryption and HIPAA compliance</td>
+<td>Privacy Officer, DevSecOps</td>
+<td>Security framework</td>
+<td>Handles sensitive discussions like data use or family sharing in clear language</td>
+<td>Boosts trust and comprehension of legal/ethical concepts</td>
+<td>Phase 4</td>
+</tr>
+<tr class="odd">
+<td>T11</td>
+<td>Conduct usability testing with seniors</td>
+<td>User Researcher, Support Staff</td>
+<td>Demo units, testing labs</td>
+<td>LLM interprets real-time user feedback during sessions</td>
+<td>Enables rapid personalization and identifies frustration triggers</td>
+<td>Phase 4</td>
+</tr>
+<tr class="even">
+<td>T12</td>
+<td>Deploy pilot version in test homes</td>
+<td>Ops Team, Customer Support</td>
+<td>10-20 pilot units, feedback tracking</td>
+<td>Analyzes in-product textual or verbal feedback for sentiment/emotion detection</td>
+<td>Allows automatic system adaptation based on user satisfaction</td>
+<td>Phase 5</td>
+</tr>
+<tr class="odd">
+<td>T13</td>
+<td>Train caregivers and family on dashboard</td>
+<td>Training Specialist</td>
+<td>Online modules, guides, live support</td>
+<td>LLM acts as an assistant to explain dashboard elements conversationally or via chatbot.</td>
+<td>Reduces technical barriers for family/caregivers; improves support continuity.</td>
+<td>Phase 5</td>
+</tr>
+<tr class="even">
+<td>T14</td>
+<td>Final QA &amp; bug fixing pre-launch</td>
+<td>QA Team, Dev Team</td>
+<td>Issue tracker, test automation suite</td>
+<td>Used for automated log summarization or detecting anomalies in user logs (e.g., misunderstanding patterns).</td>
+<td>Ensures smoother, more stable interactions with minimal breakdowns.</td>
+<td>Phase 6</td>
+</tr>
+<tr class="odd">
+<td>T15</td>
+<td>Launch CompanionBot &amp; onboarding campaign</td>
+<td>Marketing, Sales, Support</td>
+<td>CRM, webinars, NGO partnerships</td>
+<td>LLM supports onboarding script personalization and FAQ chatbot for new users and families.</td>
+<td>Reduces onboarding stress and improves adoption rates across different cognitive levels.</td>
+<td>Phase 6</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="evaluation-of-scheduling-and-prioritization-of-tasks-and-resources" class="level1">
+<h1>6. Evaluation of Scheduling and Prioritization of Tasks and Resources</h1>
+<section id="framework-overview" class="level2">
+<h2 class="anchored" data-anchor-id="framework-overview">1. Framework Overview</h2>
+<p>The CompanionBot project represents a complex AI-driven healthcare technology initiative requiring sophisticated resource management and task prioritization strategies. This evaluation examines the systematic approach to scheduling and resource allocation that ensures optimal project outcomes while maintaining quality standards and regulatory compliance. The framework balances stakeholder needs, technical constraints, and market demands through a multi-dimensional approach that considers human capital, technical infrastructure, financial resources, and time dependencies.</p>
+<p>The success of CompanionBot depends not only on resource availability but also on strategic allocation and implementation of robust prioritization mechanisms that adapt to changing requirements and emerging challenges in elderly care technology development.</p>
+</section>
+<section id="resource-classification-and-strategic-allocation" class="level2">
+<h2 class="anchored" data-anchor-id="resource-classification-and-strategic-allocation">2. Resource Classification and Strategic Allocation</h2>
+<section id="human-resource-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="human-resource-distribution">Human Resource Distribution</h3>
+<p>The project’s human resource strategy follows a structured hierarchy ensuring optimal skill utilization while maintaining clear accountability. The allocation reflects the project’s emphasis on user-centered design and regulatory compliance.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 10%">
+<col style="width: 13%">
+<col style="width: 40%">
+<col style="width: 15%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Resource Category</th>
+<th>Allocation</th>
+<th>Priority Level</th>
+<th>Key Roles</th>
+<th>Timeline Focus</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Product Leadership</td>
+<td>15%</td>
+<td>Critical</td>
+<td>Product Manager, UX Designer, User Researcher</td>
+<td>Phases 1-6</td>
+</tr>
+<tr class="even">
+<td>Core Development</td>
+<td>35%</td>
+<td>Critical</td>
+<td>AI/ML Engineers, Software Developers, Hardware Engineers</td>
+<td>Phases 2-5</td>
+</tr>
+<tr class="odd">
+<td>Specialized Expertise</td>
+<td>20%</td>
+<td>High</td>
+<td>Data Scientists, QA Engineers, Gerontologists</td>
+<td>Phases 3-6</td>
+</tr>
+<tr class="even">
+<td>Clinical Advisory</td>
+<td>10%</td>
+<td>High</td>
+<td>MDs, RNs, Speech-Language Pathologists</td>
+<td>Phases 2-4</td>
+</tr>
+<tr class="odd">
+<td>Compliance &amp; Ethics</td>
+<td>8%</td>
+<td>Critical</td>
+<td>Privacy Officers, Ethics Advisors</td>
+<td>Phases 1-6</td>
+</tr>
+<tr class="even">
+<td>Support Operations</td>
+<td>12%</td>
+<td>Medium</td>
+<td>Customer Support, Training Specialists</td>
+<td>Phases 5-6</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="technical-infrastructure-prioritization" class="level3">
+<h3 class="anchored" data-anchor-id="technical-infrastructure-prioritization">Technical Infrastructure Prioritization</h3>
+<p>Technical infrastructure represents a significant investment requiring careful prioritization to ensure scalability and reliability. The allocation follows a risk-based approach where critical components affecting user safety and regulatory compliance receive highest priority.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 25%">
+<col style="width: 22%">
+<col style="width: 11%">
+<col style="width: 40%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Infrastructure Component</th>
+<th>Investment Range</th>
+<th>Priority</th>
+<th>Implementation Dependencies</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Hardware Development</td>
+<td>$2.5M – $4M</td>
+<td>Critical</td>
+<td>Industrial design, component sourcing</td>
+</tr>
+<tr class="even">
+<td>AI/ML Platform</td>
+<td>$800K – $1.2M</td>
+<td>Critical</td>
+<td>Data collection, model training</td>
+</tr>
+<tr class="odd">
+<td>Security Framework</td>
+<td>$400K – $600K</td>
+<td>Critical</td>
+<td>Legal compliance, data protection</td>
+</tr>
+<tr class="even">
+<td>Cloud Infrastructure</td>
+<td>$300K – $500K annually</td>
+<td>High</td>
+<td>Security certification, HIPAA compliance</td>
+</tr>
+<tr class="odd">
+<td>Integration APIs</td>
+<td>$200K – $400K</td>
+<td>High</td>
+<td>EHR partnerships, smart home vendors</td>
+</tr>
+<tr class="even">
+<td>Testing Environment</td>
+<td>$150K – $250K</td>
+<td>Medium</td>
+<td>Hardware prototypes, user testing</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="task-prioritization-methodology" class="level2">
+<h2 class="anchored" data-anchor-id="task-prioritization-methodology">3. Task Prioritization Methodology</h2>
+<section id="multi-criteria-decision-framework" class="level3">
+<h3 class="anchored" data-anchor-id="multi-criteria-decision-framework">Multi-Criteria Decision Framework</h3>
+<p>The project employs a sophisticated scoring system that evaluates tasks based on multiple dimensions, ensuring systematic and transparent resource allocation decisions.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 19%">
+<col style="width: 7%">
+<col style="width: 39%">
+<col style="width: 34%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Evaluation Criteria</th>
+<th>Weight</th>
+<th>Description</th>
+<th>Scoring Impact</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>User Impact</td>
+<td>25%</td>
+<td>Direct benefit to elderly users and families</td>
+<td>Primary driver for feature selection</td>
+</tr>
+<tr class="even">
+<td>Technical Feasibility</td>
+<td>20%</td>
+<td>Implementation complexity and risk assessment</td>
+<td>Prevents over-commitment to unrealistic features</td>
+</tr>
+<tr class="odd">
+<td>Regulatory Compliance</td>
+<td>20%</td>
+<td>Alignment with HIPAA, GDPR, safety requirements</td>
+<td>Ensures legal adherence and market access</td>
+</tr>
+<tr class="even">
+<td>Stakeholder Value</td>
+<td>15%</td>
+<td>Benefit to healthcare providers and caregivers</td>
+<td>Supports ecosystem adoption</td>
+</tr>
+<tr class="odd">
+<td>Market Differentiation</td>
+<td>10%</td>
+<td>Competitive advantage and unique value</td>
+<td>Drives commercial success</td>
+</tr>
+<tr class="even">
+<td>Resource Efficiency</td>
+<td>10%</td>
+<td>Cost-effectiveness and optimization</td>
+<td>Maintains budget discipline</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="feature-development-priority-tiers" class="level3">
+<h3 class="anchored" data-anchor-id="feature-development-priority-tiers">Feature Development Priority Tiers</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 11%">
+<col style="width: 40%">
+<col style="width: 16%">
+<col style="width: 31%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Priority Tier</th>
+<th>Features</th>
+<th>Resource Allocation</th>
+<th>Justification</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Tier 1 (Critical)</td>
+<td>Basic conversation, medication reminders, emergency alerts</td>
+<td>40%</td>
+<td>Core safety and companionship functions</td>
+</tr>
+<tr class="even">
+<td>Tier 2 (High)</td>
+<td>Health monitoring, family communication, cognitive games</td>
+<td>35%</td>
+<td>Enhanced value proposition</td>
+</tr>
+<tr class="odd">
+<td>Tier 3 (Medium)</td>
+<td>Smart home integration, advanced AI personalization</td>
+<td>20%</td>
+<td>Competitive differentiation</td>
+</tr>
+<tr class="even">
+<td>Tier 4 (Low)</td>
+<td>Advanced entertainment, complex social features</td>
+<td>5%</td>
+<td>Future enhancement opportunities</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="development-timeline-and-critical-path-management" class="level2">
+<h2 class="anchored" data-anchor-id="development-timeline-and-critical-path-management">4. Development Timeline and Critical Path Management</h2>
+<section id="phase-based-development-schedule" class="level3">
+<h3 class="anchored" data-anchor-id="phase-based-development-schedule">Phase-Based Development Schedule</h3>
+<p>The development follows a structured timeline that aligns resource allocation with project milestones and stakeholder deliverables, providing flexibility for iterative development while maintaining accountability.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 8%">
+<col style="width: 29%">
+<col style="width: 16%">
+<col style="width: 27%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Phase</th>
+<th>Duration</th>
+<th>Key Deliverables</th>
+<th>Resource Focus</th>
+<th>Success Metrics</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Phase 1: Foundation</td>
+<td>3 months</td>
+<td>Requirements, architecture, team assembly</td>
+<td>Product team, infrastructure</td>
+<td>Stakeholder approval, technical feasibility</td>
+</tr>
+<tr class="even">
+<td>Phase 2: Core Development</td>
+<td>6 months</td>
+<td>Basic AI, hardware prototype, safety features</td>
+<td>Development team, clinical advisors</td>
+<td>Functional prototype, safety validation</td>
+</tr>
+<tr class="odd">
+<td>Phase 3: Integration</td>
+<td>4 months</td>
+<td>System integration, initial testing</td>
+<td>Full team, testing infrastructure</td>
+<td>Integration testing, user acceptance</td>
+</tr>
+<tr class="even">
+<td>Phase 4: Validation</td>
+<td>3 months</td>
+<td>Clinical trials, regulatory approval</td>
+<td>Compliance team, clinical partners</td>
+<td>Regulatory clearance, user validation</td>
+</tr>
+<tr class="odd">
+<td>Phase 5: Pilot Deployment</td>
+<td>2 months</td>
+<td>Limited release, user training</td>
+<td>Support team, training specialists</td>
+<td>User adoption, feedback collection</td>
+</tr>
+<tr class="even">
+<td>Phase 6: Full Launch</td>
+<td>2 months</td>
+<td>Market launch, scaling operations</td>
+<td>Marketing, operations team</td>
+<td>Market penetration, operational efficiency</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="critical-path-analysis" class="level3">
+<h3 class="anchored" data-anchor-id="critical-path-analysis">Critical Path Analysis</h3>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 15%">
+<col style="width: 7%">
+<col style="width: 27%">
+<col style="width: 24%">
+<col style="width: 24%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Critical Activity</th>
+<th>Duration</th>
+<th>Resource Requirements</th>
+<th>Risk Factors</th>
+<th>Mitigation Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>AI Model Development</td>
+<td>4 months</td>
+<td>3 AI engineers, compute resources</td>
+<td>Model performance, training data quality</td>
+<td>Parallel algorithm development, data augmentation</td>
+</tr>
+<tr class="even">
+<td>Hardware Certification</td>
+<td>3 months</td>
+<td>Hardware team, testing lab</td>
+<td>Regulatory approval, component availability</td>
+<td>Early prototype testing, supplier diversification</td>
+</tr>
+<tr class="odd">
+<td>Clinical Validation</td>
+<td>2 months</td>
+<td>Clinical advisors, test sites</td>
+<td>User acceptance, health outcome validation</td>
+<td>Phased testing approach, multiple validation sites</td>
+</tr>
+<tr class="even">
+<td>Security Audit</td>
+<td>1.5 months</td>
+<td>Security team, external auditors</td>
+<td>Vulnerability discovery, compliance gaps</td>
+<td>Continuous security testing, expert consultation</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="performance-monitoring-and-optimization" class="level2">
+<h2 class="anchored" data-anchor-id="performance-monitoring-and-optimization">5. Performance Monitoring and Optimization</h2>
+<section id="resource-utilization-metrics" class="level3">
+<h3 class="anchored" data-anchor-id="resource-utilization-metrics">Resource Utilization Metrics</h3>
+<p>Effective resource management requires continuous monitoring of utilization rates and efficiency metrics to identify optimization opportunities and ensure project objectives are met within constraints.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 20%">
+<col style="width: 16%">
+<col style="width: 16%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Metric Category</th>
+<th>Specific Metrics</th>
+<th>Target Range</th>
+<th>Monitoring Frequency</th>
+<th>Corrective Actions</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Budget Utilization</td>
+<td>Spend rate, variance from plan</td>
+<td>±5% of planned</td>
+<td>Weekly</td>
+<td>Budget reallocation, scope adjustment</td>
+</tr>
+<tr class="even">
+<td>Timeline Adherence</td>
+<td>Milestone completion, critical path delays</td>
+<td>95% on-time</td>
+<td>Daily</td>
+<td>Resource reallocation, parallel activities</td>
+</tr>
+<tr class="odd">
+<td>Team Productivity</td>
+<td>Story points completed, velocity trends</td>
+<td>85-110% of baseline</td>
+<td>Sprint cycles</td>
+<td>Team optimization, skill development</td>
+</tr>
+<tr class="even">
+<td>Quality Metrics</td>
+<td>Defect rates, user acceptance scores</td>
+<td>&lt;2% defects, &gt;90% acceptance</td>
+<td>Continuous</td>
+<td>Quality process improvement</td>
+</tr>
+<tr class="odd">
+<td>Stakeholder Satisfaction</td>
+<td>Feedback scores, engagement levels</td>
+<td>&gt;80% satisfaction</td>
+<td>Monthly</td>
+<td>Communication improvement, expectation management</td>
+</tr>
+</tbody>
+</table>
+<p><strong>Dynamic Resource Allocation Strategy</strong></p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 20%">
+<col style="width: 24%">
+<col style="width: 19%">
+<col style="width: 35%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Trigger Event</th>
+<th>Response Strategy</th>
+<th>Resource Impact</th>
+<th>Timeline Adjustment</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Technical Breakthrough</td>
+<td>Accelerate related development</td>
+<td>+20% to breakthrough area</td>
+<td>Potential timeline compression</td>
+</tr>
+<tr class="even">
+<td>Regulatory Delay</td>
+<td>Shift focus to parallel activities</td>
+<td>Reallocate compliance resources</td>
+<td>Maintain overall timeline</td>
+</tr>
+<tr class="odd">
+<td>User Feedback</td>
+<td>Prioritize user-requested features</td>
+<td>Adjust feature development allocation</td>
+<td>Minor timeline impact</td>
+</tr>
+<tr class="even">
+<td>Competitive Pressure</td>
+<td>Accelerate differentiation features</td>
+<td>+15% to competitive features</td>
+<td>Potential scope adjustment</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="financial-resource-management-and-risk-mitigation" class="level2">
+<h2 class="anchored" data-anchor-id="financial-resource-management-and-risk-mitigation">6. Financial Resource Management and Risk Mitigation</h2>
+<section id="budget-allocation-and-optimization" class="level3">
+<h3 class="anchored" data-anchor-id="budget-allocation-and-optimization">Budget Allocation and Optimization</h3>
+<p>The financial framework balances immediate development needs with long-term sustainability requirements while maintaining adequate reserves for risk management.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 16%">
+<col style="width: 9%">
+<col style="width: 16%">
+<col style="width: 29%">
+<col style="width: 29%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Budget Category</th>
+<th>Percentage</th>
+<th>Amount Range</th>
+<th>Justification</th>
+<th>Optimization Strategy</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Personnel Costs</td>
+<td>60%</td>
+<td>$3.6M – $6M</td>
+<td>Core team expertise, specialized skills</td>
+<td>Agile development, skill sharing</td>
+</tr>
+<tr class="even">
+<td>Technology Infrastructure</td>
+<td>20%</td>
+<td>$1.2M – $2M</td>
+<td>Hardware, software, cloud services</td>
+<td>Open source integration, partnerships</td>
+</tr>
+<tr class="odd">
+<td>Compliance &amp; Legal</td>
+<td>8%</td>
+<td>$480K – $800K</td>
+<td>Regulatory requirements, IP protection</td>
+<td>Early compliance planning, automation</td>
+</tr>
+<tr class="even">
+<td>Marketing &amp; Sales</td>
+<td>7%</td>
+<td>$420K – $700K</td>
+<td>Market entry, customer acquisition</td>
+<td>Digital marketing, strategic partnerships</td>
+</tr>
+<tr class="odd">
+<td>Operations &amp; Support</td>
+<td>3%</td>
+<td>$180K – $300K</td>
+<td>Customer service, maintenance</td>
+<td>Self-service tools, automation</td>
+</tr>
+<tr class="even">
+<td>Contingency</td>
+<td>2%</td>
+<td>$120K – $200K</td>
+<td>Risk mitigation, unexpected costs</td>
+<td>Risk-based allocation, flexible reserves</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+<section id="quality-assurance-and-compliance-resource-allocation" class="level2">
+<h2 class="anchored" data-anchor-id="quality-assurance-and-compliance-resource-allocation">7. Quality Assurance and Compliance Resource Allocation</h2>
+<section id="quality-driven-resource-distribution" class="level3">
+<h3 class="anchored" data-anchor-id="quality-driven-resource-distribution">Quality-Driven Resource Distribution</h3>
+<p>Quality assurance requires dedicated allocation across all development phases to ensure safety, usability, and reliability standards for elderly care applications.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 17%">
+<col style="width: 21%">
+<col style="width: 30%">
+<col style="width: 30%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>QA Activity</th>
+<th>Resource Allocation</th>
+<th>Quality Metrics</th>
+<th>Success Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Requirements Validation</td>
+<td>10% of QA budget</td>
+<td>Requirements coverage, stakeholder approval</td>
+<td>100% requirement validation</td>
+</tr>
+<tr class="even">
+<td>Design Review</td>
+<td>15% of QA budget</td>
+<td>Design compliance, usability scores</td>
+<td>95% design approval rate</td>
+</tr>
+<tr class="odd">
+<td>Code Quality</td>
+<td>25% of QA budget</td>
+<td>Code coverage, defect density</td>
+<td>&lt;2 defects per KLOC</td>
+</tr>
+<tr class="even">
+<td>Integration Testing</td>
+<td>20% of QA budget</td>
+<td>System integration success</td>
+<td>98% integration test pass rate</td>
+</tr>
+<tr class="odd">
+<td>User Acceptance</td>
+<td>20% of QA budget</td>
+<td>User satisfaction, usability metrics</td>
+<td>90% user acceptance rate</td>
+</tr>
+<tr class="even">
+<td>Compliance Validation</td>
+<td>10% of QA budget</td>
+<td>Regulatory compliance, security audit</td>
+<td>100% compliance certification</td>
+</tr>
+</tbody>
+</table>
+</section>
+<section id="risk-based-testing-strategy" class="level3">
+<h3 class="anchored" data-anchor-id="risk-based-testing-strategy">Risk-Based Testing Strategy</h3>
+<p>Testing strategy prioritizes high-risk areas that could impact user safety or system reliability, ensuring critical functionality receives appropriate resources.</p>
+<table class="caption-top table">
+<colgroup>
+<col style="width: 22%">
+<col style="width: 12%">
+<col style="width: 26%">
+<col style="width: 38%">
+</colgroup>
+<thead>
+<tr class="header">
+<th>Risk Area</th>
+<th>Risk Level</th>
+<th>Testing Resources</th>
+<th>Acceptance Criteria</th>
+</tr>
+</thead>
+<tbody>
+<tr class="odd">
+<td>Medication Reminders</td>
+<td>Critical</td>
+<td>30% of testing budget</td>
+<td>99.9% reliability</td>
+</tr>
+<tr class="even">
+<td>Emergency Alerts</td>
+<td>Critical</td>
+<td>25% of testing budget</td>
+<td>100% alert delivery</td>
+</tr>
+<tr class="odd">
+<td>Health Data Security</td>
+<td>Critical</td>
+<td>20% of testing budget</td>
+<td>Zero security vulnerabilities</td>
+</tr>
+<tr class="even">
+<td>User Interface</td>
+<td>High</td>
+<td>15% of testing budget</td>
+<td>95% usability score</td>
+</tr>
+<tr class="odd">
+<td>AI Interactions</td>
+<td>High</td>
+<td>10% of testing budget</td>
+<td>90% appropriate response rate</td>
+</tr>
+</tbody>
+</table>
+</section>
+</section>
+</section>
+<section id="dependency-identification" class="level1">
+<h1>7. Dependency Identification</h1>
+<p>The successful implementation of CompanionBot relies on the coordinated interaction of multiple technical systems, organizational roles, external vendors, and regulatory frameworks. Identifying and managing these dependencies early is essential to ensure uninterrupted development, maintain system integrity, and support compliance with safety and privacy standards.</p>
+<section id="technical-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="technical-dependencies">Technical Dependencies</h2>
+<ul>
+<li><strong>Large Language Model (LLM) API:</strong> All conversational, emotional, and adaptive personalization features are dependent on the performance and availability of the LLM engine.</li>
+<li><strong>Health Monitoring Sensors:</strong> Integration with medical peripherals (e.g., blood pressure monitors, oximeters) is dependent on device-specific APIs and reliable Bluetooth/Zigbee communication protocols.</li>
+<li><strong>AWS Cloud Synchronization:</strong> System behavior depends on stable cloud connectivity for data persistence, analytics, and user profile management, with fallback mechanisms for offline usage.</li>
+<li><strong>Telehealth and EHR Integration:</strong> Interoperability with external health systems (FHIR APIs) requires alignment with third-party update cycles and interface changes.</li>
+</ul>
+</section>
+<section id="organizational-and-process-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="organizational-and-process-dependencies">Organizational and Process Dependencies</h2>
+<ul>
+<li><strong>Stakeholder Feedback Loops:</strong> The Co-Design Council and caregiver testing groups play a central role in interface and feature prioritization. Development sprints depend on timely input and validation cycles.</li>
+<li><strong>Cross-Team Coordination:</strong> Seamless delivery requires synchronization between AI/ML, UX, clinical advisors, and various consultants. Bottlenecks in one team may delay dependent components.</li>
+<li><strong>Training Resources for Families and Caregivers:</strong> Deployment success depends on the creation and dissemination of training modules, which are reliant on the availability of support staff and content specialists.</li>
+</ul>
+</section>
+<section id="vendor-and-regulatory-dependencies" class="level2">
+<h2 class="anchored" data-anchor-id="vendor-and-regulatory-dependencies">Vendor and Regulatory Dependencies</h2>
+<ul>
+<li><strong>Hardware Supply Chain:</strong> All hardware components are sourced externally. Delays in component delivery can affect assembly and testing milestones.</li>
+<li><strong>Compliance Certifications:</strong> Deployment hinges on timely security audits and HIPAA/SOC2 validations, which require coordination with external compliance experts and auditors.</li>
+<li><strong>Partnerships with Elder-Care Facilities, Clinics, and NGOs:</strong> Access to pilot environments and user feedback is contingent on third-party collaboration timelines, legal agreements, and site-specific onboarding procedures.</li>
+</ul>
+</section>
+<section id="mitigation-strategies" class="level2">
+<h2 class="anchored" data-anchor-id="mitigation-strategies">Mitigation Strategies</h2>
+<ul>
+<li><strong>Live Dependency Register:</strong> Maintained by the Project Manager and updated at each sprint planning session; tracks technical, legal, and logistical dependencies by module and development phase.</li>
+<li><strong>Fallback Planning:</strong> Local-only operation modes are implemented for critical features like medication reminders and emergency alerts in case of cloud failure or API disruption.</li>
+<li><strong>Parallel Workstreams:</strong> Tasks are decoupled where possible to allow non-blocking progress, e.g., UX testing on synthetic data while waiting for clinical validation.</li>
+<li><strong>Automated Monitoring:</strong> Integration of build systems and testing pipelines with dependency scanning tools ensures early detection of version conflicts or broken integrations.</li>
+</ul>
+<p>By proactively identifying and addressing interdependencies, CompanionBot ensures stable progress across all development phases, while maintaining flexibility to adapt to external or internal changes.</p>
+</section>
+</section>
+<section id="identification-and-assessment-of-risks-in-terms-of-resources" class="level1">
+<h1>8. Identification and Assessment of Risks (in Terms of Resources)</h1>
+<p>Effective resource management for CompanionBot requires not only accurate allocation but also early detection of risks that may jeopardize delivery, compliance, or system stability. This section outlines key risk domains associated with human, technical, financial, and regulatory resources, alongside assessment metrics and mitigation strategies.</p>
+<section id="human-resource-risks" class="level2">
+<h2 class="anchored" data-anchor-id="human-resource-risks">Human Resource Risks</h2>
+<ul>
+<li><strong>Skill Gaps in Specialized Roles:</strong> Limited availability of AI/ML engineers, gerontologists, and compliance officers with relevant expertise may delay module implementation (e.g., emotion recognition, HIPAA alignment).
+<ul>
+<li><em>Likelihood:</em> High</li>
+<li><em>Impact:</em> Critical for core functionality</li>
+<li><em>Mitigation:</em> Maintain expert advisory pool, invest in parallel onboarding, cross-train team members.</li>
+</ul></li>
+<li><strong>Resource Turnover During Development:</strong> Unexpected departure of key team members (e.g., Product Owner, UX Lead) could disrupt project continuity and stakeholder alignment.
+<ul>
+<li><em>Likelihood:</em> Medium</li>
+<li><em>Impact:</em> High on coordination and velocity</li>
+<li><em>Mitigation:</em> Maintain updated documentation, implement succession plans, ensure knowledge redundancy.</li>
+</ul></li>
+</ul>
+</section>
+<section id="technical-resource-risks" class="level2">
+<h2 class="anchored" data-anchor-id="technical-resource-risks">Technical Resource Risks</h2>
+<ul>
+<li><strong>GPU Infrastructure Limitations:</strong> High computational demand for LLM inference and training could exceed available GPU resources, affecting emotion-aware responses and adaptive personalization.
+<ul>
+<li><em>Likelihood:</em> Medium</li>
+<li><em>Impact:</em> High on AI performance</li>
+<li><em>Mitigation:</em> Use scalable cloud compute, prioritize model optimization, secure compute credits from providers.</li>
+</ul></li>
+<li><strong>Hardware Supply Delays:</strong> Delays in delivery of essential components (e.g., LED facial modules, embedded sensors) could stall prototyping and testing phases.
+<ul>
+<li><em>Likelihood:</em> High</li>
+<li><em>Impact:</em> Medium to high</li>
+<li><em>Mitigation:</em> Identify backup suppliers, pre-order critical parts, use modular hardware design.</li>
+</ul></li>
+</ul>
+</section>
+<section id="financial-resource-risks" class="level2">
+<h2 class="anchored" data-anchor-id="financial-resource-risks">Financial Resource Risks</h2>
+<ul>
+<li><strong>Budget Overrun Due to Compliance and Validation Costs:</strong> Costs associated with legal certification, audits, and regulatory documentation may exceed initial estimates.
+<ul>
+<li><em>Likelihood:</em> Medium</li>
+<li><em>Impact:</em> High on launch schedule</li>
+<li><em>Mitigation:</em> Reserve contingency budget (5–10%), engage compliance experts early, pursue co-funding opportunities (grants, institutional partners).</li>
+</ul></li>
+<li><strong>Inadequate Funding for Support and Training:</strong> Underfunding post-deployment training for caregivers and families may reduce adoption and increase dropout rates.
+<ul>
+<li><em>Likelihood:</em> Medium</li>
+<li><em>Impact:</em> High on user satisfaction and system continuity</li>
+<li><em>Mitigation:</em> Allocate specific budget to onboarding, integrate LLM-powered training assistants, monitor training outcomes.</li>
+</ul></li>
+</ul>
+</section>
+<section id="regulatory-and-partnership-risks" class="level2">
+<h2 class="anchored" data-anchor-id="regulatory-and-partnership-risks">Regulatory and Partnership Risks</h2>
+<ul>
+<li><strong>Delay in Certification or Audit Outcomes:</strong> Slower-than-expected regulatory feedback (e.g., HIPAA, CE) could delay launch or limit scope of deployment.
+<ul>
+<li><em>Likelihood:</em> Medium</li>
+<li><em>Impact:</em> High on go-to-market readiness</li>
+<li><em>Mitigation:</em> Begin audit preparation in parallel with development, prioritize documentation, establish direct communication channels with auditors.</li>
+</ul></li>
+<li><strong>Stakeholder Partnership Withdrawal:</strong> Key pilot partners (e.g., care homes or NGOs) may withdraw due to internal priorities or strategic changes.
+<ul>
+<li><em>Likelihood:</em> Low to medium</li>
+<li><em>Impact:</em> Medium on pilot phase</li>
+<li><em>Mitigation:</em> Diversify pilot sites, maintain regular engagement with partners, sign flexible MoUs.</li>
+</ul></li>
+</ul>
+</section>
+<section id="risk-monitoring-and-reporting" class="level2">
+<h2 class="anchored" data-anchor-id="risk-monitoring-and-reporting">Risk Monitoring and Reporting</h2>
+<p>CompanionBot applies a continuous risk-tracking model:</p>
+<ul>
+<li><strong>Risk Register:</strong> Maintained by the project management team, updated biweekly.</li>
+<li><strong>Risk Heat Maps:</strong> Used to visualize severity vs.&nbsp;likelihood across categories.</li>
+<li><strong>LLM-Based Analysis:</strong> Applied to project communications and logs to detect signals of emerging risks (e.g., unmet deadlines, reduced output velocity).</li>
+<li><strong>Monthly Risk Review Meetings:</strong> Representatives from product, compliance, AI, and stakeholder teams realign mitigation actions.</li>
+</ul>
+<p>By embedding risk identification into all resource management activities, the CompanionBot team ensures stable progress under realistic constraints and supports a proactive rather than reactive delivery model.</p>
+<!-- # Companion Bot: Design Document -->
+<!---->
+<!-- ![][image1] -->
+<!---->
+<!-- # 1\. CompanionBot: System Definition and Super-Characterization -->
+<!---->
+<!-- ## **1\. Purpose of the System** -->
+<!---->
+<!-- ## CompanionBot serves as an AI-driven digital companion specifically designed to enhance the quality of life for seniors by addressing several critical challenges in elderly care: -->
+<!---->
+<!-- * ## **Social Isolation and Loneliness**: Providing consistent companionship and facilitating connections with family, friends, and peer communities -->
+<!---->
+<!-- * ## **Health Management Complexity**: Offering structured assistance with medication adherence, health monitoring, and wellness activities -->
+<!---->
+<!-- * ## **Cognitive Engagement**: Delivering personalized mental stimulation to maintain cognitive function and prevent decline -->
+<!---->
+<!-- * ## **Technology Bridge**: Serving as an accessible gateway between seniors, their families and modern digital technologies -->
+<!---->
+<!-- ## The system aims to complement, not replace, human care by providing 24/7 availability, consistent interaction quality, and personalized support tailored to individual user needs and preferences. -->
+<!---->
+<!-- ## **2\. What the System Will Do** -->
+<!---->
+<!-- ## Core Functionalities -->
+<!---->
+<!-- ### Social Connection Module -->
+<!---->
+<!-- * ## Facilitate video calls with family members and friends through simplified interfaces -->
+<!---->
+<!-- * ## Enable photo sharing and digital album creation for memory preservation -->
+<!---->
+<!-- * ## Coordinate group activities with other CompanionBot users (virtual bingo, book clubs, discussion groups) -->
+<!---->
+<!-- * ## Provide daily conversational engagement with natural language processing and through an **Large Language Model (LLM)** capable of understanding user context and emotional tone. -->
+<!---->
+<!-- ### Health Management Module -->
+<!---->
+<!-- * ## Deliver personalized medication reminders with adherence tracking -->
+<!---->
+<!-- * ## Guide users through age-appropriate exercise routines and physical activities -->
+<!---->
+<!-- * ## Monitor vital signs through integrated health devices (blood pressure, pulse oximetry) -->
+<!---->
+<!-- * ## Facilitate meditation and relaxation sessions for mental wellness -->
+<!---->
+<!-- * ## Track symptoms and maintain health journals for healthcare provider communication -->
+<!---->
+<!-- * ## Provide hydration and nutrition reminders based on individual health needs -->
+<!---->
+<!-- ### Cognitive Engagement Module -->
+<!---->
+<!-- * ## Offer adaptive brain games and puzzles tailored to user cognitive ability -->
+<!---->
+<!-- * ## Engage in current events discussions and news updates -->
+<!---->
+<!-- * ## Provide virtual travel experiences and cultural exploration -->
+<!---->
+<!-- * ## Support music appreciation activities and personalized playlists -->
+<!---->
+<!-- * ## Enable creative activities including poetry composition -->
+<!---->
+<!-- ### Smart Integration Module -->
+<!---->
+<!-- * ## Control compatible smart home devices through voice commands -->
+<!---->
+<!-- * ## Provide contextual awareness of home environment for safety monitoring -->
+<!---->
+<!-- * ## Integrate with existing healthcare systems for seamless care coordination -->
+<!---->
+<!-- * ## Support telehealth session facilitation and technical assistance -->
+<!---->
+<!-- ## Advanced AI Capabilities -->
+<!---->
+<!-- * **LLM-Powered Personalized Learning**: The system integrates a Large Language Model to support flexible, natural, and emotionally aware dialogue. The LLM allows CompanionBot to remember user preferences, adapt interaction patterns and routines, and provide personalized suggestions. -->
+<!---->
+<!-- * ## **Proactive Engagement**: Detection of loneliness indicators and initiation of appropriate interventions -->
+<!---->
+<!-- * ## **Emotion Recognition**: Analysis of vocal patterns and facial expressions to provide empathetic responses -->
+<!---->
+<!-- * ## **Context Awareness**: Understanding of user routines, preferences, and environmental factors for intelligent assistance -->
+<!---->
+<!-- * ## **Multi-modal Interaction**: Support for voice, touch, gesture, and visual communication modalities -->
+<!---->
+<!--   ## **3\. How Users Will Interact with the System** -->
+<!---->
+<!-- ## Primary Interaction Modalities -->
+<!---->
+<!-- ### Voice Interaction -->
+<!---->
+<!-- * Natural language conversation capabilities powered by an **LLM**, enabling contextual memory, multilingual support, and emotionally adaptive interaction with seniors. -->
+<!---->
+<!-- * ## Voice commands for system control and activity initiation -->
+<!---->
+<!-- * ## Adjustable speech rate and volume for hearing accessibility -->
+<!---->
+<!-- * ## Multi-language support for diverse user populations -->
+<!---->
+<!-- ### Touch Interface -->
+<!---->
+<!-- * ## Large, high-contrast buttons on detachable tablet display -->
+<!---->
+<!-- * ## Simplified navigation with minimal cognitive load -->
+<!---->
+<!-- * ## Haptic feedback for confirmation of actions -->
+<!---->
+<!-- * ## Customizable interface layouts based on user abilities -->
+<!---->
+<!-- ### Visual Interaction -->
+<!---->
+<!-- * ## Expressive robotic head with emotional LED indicators -->
+<!---->
+<!-- * ## Video calling capabilities through integrated camera systems -->
+<!---->
+<!-- * ## Photo sharing and viewing on high-resolution displays -->
+<!---->
+<!-- * ## Gesture recognition for users with speech limitations -->
+<!---->
+<!-- ### Physical Interaction -->
+<!---->
+<!-- * ## Motion sensors for presence detection and automatic engagement -->
+<!---->
+<!-- * ## Emergency alert pendant integration for safety monitoring -->
+<!---->
+<!-- * ## Health device connectivity for seamless data collection -->
+<!---->
+<!-- * ## Smart home device control through centralized hub -->
+<!---->
+<!-- ## Accessibility Features -->
+<!---->
+<!-- The system is designed to accommodate a wide range of user needs: for those with visual impairments, it offers high-contrast displays, large-text options, and voice guidance; for users with hearing challenges, it provides visual indicators, adjustable volume controls, and text-to-speech alternatives; for individuals with motor difficulties, it supports multiple input methods, simplified gestures, and voice-operated controls; and for those who benefit from cognitive assistance, it maintains consistent interfaces, supplies clear instructions, and allows for patient repetition. -->
+<!---->
+<!-- ## **4\. Who Will Use the System** -->
+<!---->
+<!-- ## Primary Users -->
+<!---->
+<!-- ### Independent Seniors -->
+<!---->
+<!-- * ## Living independently in their own homes -->
+<!---->
+<!-- * ## Experiencing mild to moderate social isolation -->
+<!---->
+<!-- * ## Managing multiple medications and health conditions -->
+<!---->
+<!-- * ## Seeking to maintain cognitive function and social connections -->
+<!---->
+<!-- ### Seniors with Mild Cognitive Decline -->
+<!---->
+<!-- * ## Early-stage dementia or mild cognitive impairment -->
+<!---->
+<!-- * ## Requiring structured daily routines and medication reminders -->
+<!---->
+<!-- * ## Benefiting from consistent social interaction and mental stimulation -->
+<!---->
+<!-- * ## Need for simplified, patient technology interfaces -->
+<!---->
+<!-- ### Socially Isolated Seniors -->
+<!---->
+<!-- * ## Limited family contact or geographic separation from loved ones -->
+<!---->
+<!-- * ## Reduced mobility affecting social activities -->
+<!---->
+<!-- * ## Recent life transitions (widowhood, retirement, relocation) -->
+<!---->
+<!-- * ## Seeking meaningful social connections and daily structure -->
+<!---->
+<!-- ## Secondary Users -->
+<!---->
+<!-- ### Family Members and Caregivers -->
+<!---->
+<!-- * ## Adult children monitoring elderly parents' wellbeing -->
+<!---->
+<!-- * ## Professional caregivers coordinating care plans -->
+<!---->
+<!-- * ## Healthcare providers accessing health data and communication -->
+<!---->
+<!-- * ## Social workers and community health coordinators -->
+<!---->
+<!-- ### Healthcare Professionals -->
+<!---->
+<!-- * ## Primary care physicians monitoring patient adherence and health metrics -->
+<!---->
+<!-- * ## Specialists requiring regular health data collection -->
+<!---->
+<!-- * ## Mental health professionals tracking mood and cognitive function -->
+<!---->
+<!-- * ## Pharmacists supporting medication management -->
+<!---->
+<!--   ## **5\. Constraints (Privacy, Security, Ethics)** -->
+<!---->
+<!-- ## Privacy Constraints -->
+<!---->
+<!-- ### Data Collection Limitations -->
+<!---->
+<!-- * ## Explicit user consent required for all data collection activities -->
+<!---->
+<!-- * ## Minimal data collection principle: only essential information gathered -->
+<!---->
+<!-- * ## Local processing prioritized to reduce cloud data transmission -->
+<!---->
+<!-- * ## Clear data retention policies with automatic deletion schedules -->
+<!---->
+<!-- ### Information Sharing Controls -->
+<!---->
+<!-- * ## Granular permission settings for family access to health information -->
+<!---->
+<!-- * ## Healthcare provider data sharing requires explicit medical consent -->
+<!---->
+<!-- * ## Emergency protocol data sharing limited to life-threatening situations -->
+<!---->
+<!-- * ## User ability to review and delete personal data at any time -->
+<!---->
+<!-- ## Security Constraints -->
+<!---->
+<!-- ### Technical Security Requirements -->
+<!---->
+<!-- * ## End-to-end encryption for all data transmission -->
+<!---->
+<!-- * ## Secure authentication protocols for family and caregiver access -->
+<!---->
+<!-- * ## Regular security updates and vulnerability patching -->
+<!---->
+<!-- * ## Physical device security features to prevent tampering -->
+<!---->
+<!-- ### Data Protection Standards -->
+<!---->
+<!-- * ## HIPAA compliance for health-related information -->
+<!---->
+<!-- * ## SOC 2 Type II certification for cloud infrastructure -->
+<!---->
+<!-- * ## Regular third-party security audits and penetration testing -->
+<!---->
+<!-- * ## Incident response procedures for data breaches -->
+<!---->
+<!-- * ## Backup and disaster recovery protocols -->
+<!---->
+<!-- ## Ethical Constraints -->
+<!---->
+<!-- ### Autonomy and Dignity -->
+<!---->
+<!-- * ## Preservation of user independence and decision-making authority -->
+<!---->
+<!-- * ## Transparent disclosure of AI capabilities and limitations -->
+<!---->
+<!-- * ## Respect for cultural and religious preferences in care approaches -->
+<!---->
+<!-- * ## User control over AI personality and interaction styles -->
+<!---->
+<!-- ### Deception and Authenticity -->
+<!---->
+<!-- * ## Clear identification of AI vs. human interactions -->
+<!---->
+<!-- * ## Honest representation of AI emotional capabilities -->
+<!---->
+<!-- * ## Avoidance of false promises regarding health outcomes -->
+<!---->
+<!-- * ## Transparent explanation of data usage and AI decision-making -->
+<!---->
+<!-- * ## Respect for user emotional investment in AI relationships -->
+<!---->
+<!-- ### Equity and Accessibility -->
+<!---->
+<!-- * ## Affordable pricing models to prevent socioeconomic exclusion -->
+<!---->
+<!-- * ## Support for users with various disability levels -->
+<!---->
+<!-- * ## Multiple language support for diverse user populations -->
+<!---->
+<!-- * ## Training and support resources for technology adoption -->
+<!---->
+<!-- ### Care Integration Ethics -->
+<!---->
+<!-- * ## Complement, not replace, human care relationships -->
+<!---->
+<!-- * ## Support for maintaining family and social connections -->
+<!---->
+<!-- * ## Integration with existing healthcare without disruption -->
+<!---->
+<!-- * ## Respect for professional caregiver roles and expertise -->
+<!---->
+<!-- * ## Transparency with healthcare providers about AI involvement -->
+<!---->
+<!--   ## **6\. Scientific Reasoning and Research Foundation** -->
+<!---->
+<!-- ### **Loneliness and Social Isolation Research** -->
+<!---->
+<!-- ## The development of CompanionBot is grounded in extensive research demonstrating the severe health impacts of loneliness in older adults. Loneliness is a common problem in older adults and contributes to poor health, with studies showing increased risks of depression, cognitive decline, and mortality. Recent meta-analyses have demonstrated that social robot interventions had significant positive effects on decreasing depression and loneliness with large effect sizes. -->
+<!---->
+<!-- ## Research specifically examining social robots for elderly care has shown promising results. A comprehensive scoping review found that social robots could tackle both emotional and social loneliness in assisted living by empowering people to engage in different forms of social interaction inside and outside the facility. Additionally, studies on existing companion robots like ElliQ have provided valuable insights into effective design principles and user acceptance patterns. -->
+<!---->
+<!-- ## **Key Research Citations:** -->
+<!---->
+<!-- * ## Norina Gasteiger et al. (2021). "Friends from the Future: A Scoping Review of Research into Robots and Computer Agents to Combat Loneliness in Older People." *PMC* -->
+<!---->
+<!-- * ## Yen et al. (2024). "The Effect of Social Robots on Depression and Loneliness for Older Residents in Long-Term Care Facilities: A Meta-Analysis of Randomized Controlled Trials." *PubMed* -->
+<!---->
+<!-- * ## Pirhonen et al. (2020). "Can robots tackle late-life loneliness? Scanning of future opportunities and challenges in assisted living facilities." *ScienceDirect* -->
+<!---->
+<!-- ### **Medication Management and Health Compliance** -->
+<!---->
+<!-- ## Research consistently demonstrates medication non-adherence as a critical challenge in elderly care. Studies show that medication non-adherence is a common problem with a high risk for severe consequences, which can jeopardize older adults' health and independence. Robotic interventions have shown significant promise, with research indicating that using a robot for medication management had a decreasing effect on home care professionals' use of working time while improving health outcomes. -->
+<!---->
+<!-- ## Clinical trials of robotic medication management systems have demonstrated safety and usability, with all patients and 96% of nurses reported the device was easy to use in pilot studies. Advanced conversation-based systems using companion robots have been successfully implemented and tested with positive user acceptance rates. -->
+<!---->
+<!-- ## **Key Research Citations:** -->
+<!---->
+<!-- * ## Prakash et al. (2013). "Older Adults' Medication Management in the Home: How can Robots Help?" *PMC* -->
+<!---->
+<!-- * ## Kajander-Unkuri et al. (2023). "Effect of robot for medication management on home care professionals’ use of working time in older people’s home care: a non-randomized controlled clinical trial." *PMC* -->
+<!---->
+<!-- * ## Su et al. (2021). "Conversation-Based Medication Management System for Older Adults Using a Companion Robot and Cloud." *IEEE* -->
+<!---->
+<!-- ### **Cognitive Engagement and Mental Health** -->
+<!---->
+<!-- ## Research supports the importance of cognitive stimulation in maintaining mental function among older adults. Studies examining companion robots have found that companion robots should be accepted in the long-term by older adults with mild cognitive decline in order to increase their use and provide company, reduce loneliness, as well as to open the possibility of using them for therapy via social interaction. -->
+<!---->
+<!-- ## Recent research has emphasized the importance of personalized, adaptive systems that can evolve with user needs. Older adults' expectations of conversational companionship might substantially differ from what current technologies can achieve, highlighting the need for advanced AI systems with sophisticated natural language processing and emotional intelligence capabilities. -->
+<!---->
+<!-- ## **Key Research Citations:** -->
+<!---->
+<!-- * ## Figueroa et al. (2023). "Social robot for older adults with cognitive decline: a preliminary trial." *Frontiers in Robotics and AI* -->
+<!---->
+<!-- * ## Irfan et al. (2024). "Recommendations for designing conversational companion robots with older adults through foundation models." *Frontiers in Robotics and AI* -->
+<!---->
+<!-- * ## Tan et al. (2024). "Improving the Social Well-Being of Single Older Adults Using the LOVOT Social Robot: Qualitative Phenomenological Study" *JMIR Human Factors* -->
+<!---->
+<!-- # 2\. Stakeholder Analysis and Decision-Making Framework -->
+<!---->
+<!-- ## Primary Stakeholders -->
+<!---->
+<!-- | Stakeholder | Primary Interests | Influence | Expectations | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | **Elderly Users** | Ease of use, privacy, companionship, health monitoring, dignity, social connection | High \- Direct users whose adoption and satisfaction determine project success | Intuitive interface, reliable functionality, respectful interaction, privacy protection | -->
+<!-- | **Family Members** | Safety alerts, engagement updates, photo sharing, crisis notifications, senior wellbeing | High \- Often primary decision-makers for purchase and setup, ongoing support providers | Reliable alerts, easy communication, health insights, low maintenance requirements | -->
+<!-- | **Healthcare Providers** | Reliable medical alerts, actionable data, Electronic Health Records System integration, reduced false positives | Medium-High \- May recommend or discourage use based on perceived usefulness | Accurate health data, integration with existing systems, evidence-based interventions | -->
+<!-- | **NGOs (AARP, WHO Ageing)** | Accessibility, affordability, digital literacy support, ethical AI use | *Not specified in the provided text's "Primary Stakeholders" subsection* | *Not specified in the provided text's "Primary Stakeholders" subsection* | -->
+<!-- | **Investors (Business/Financial Stakeholders)** | Market scalability, ROI, regulatory compliance, user adoption metrics, competitive advantage, revenue generation | High \- Control over budget, resources, strategic direction, and go-to-market strategy | Viable product, clear market differentiation, positive adoption metrics, ROI achievement | -->
+<!-- | **Regulators (Regulatory Bodies)** | HIPAA/GDPR/ADA compliance, safety certifications, data sovereignty, ethical use of AI | Very High \- Can approve or block deployment based on compliance assessment | Adherence to regulations, transparent data practices, ethical AI implementation | -->
+<!-- | **Caregivers** | Usability insights, behavioral trend reports, workload reduction, senior wellbeing | High \- Often primary decision-makers for purchase and setup, ongoing support providers | Reliable alerts, easy communication, health insights, low maintenance requirements | -->
+<!-- | **Insurance providers** | Risk mitigation, cost reduction, and preventive care | *Not specified in the provided text's "Primary Stakeholders" subsection* | *Not specified in the provided text's "Primary Stakeholders" subsection* | -->
+<!-- | **Development Team** | Creating effective, innovative solutions, technical feasibility, professional growth | High \- Direct impact on product capabilities, quality, and timeline | Clear requirements, realistic timelines, necessary resources, technical autonomy | -->
+<!-- | **Technology Partners and Vendors** | Partnership success, technology integration, market expansion | Medium \- Impact on technical capabilities and integration success | Clear integration requirements, technical support, revenue sharing agreements | -->
+<!---->
+<!-- ## Decision-Making Framework -->
+<!---->
+<!-- ### Decision Authority Matrix -->
+<!---->
+<!-- | Decision Type | Primary Decision Maker | Required Approvals | Consultation Required | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | **Strategic Direction** | Business Stakeholders | Board/Investors | All Primary Stakeholders | -->
+<!-- | **Product Features** | Product Owner | Senior Users, Healthcare Providers | Development Team, Family Caregivers | -->
+<!-- | **Technical Architecture** | Technical Lead | Business Stakeholders | Development Team, Technology Partners | -->
+<!-- | **User Interface Design** | UX Lead | Senior Users, NGOs, Family | Family, Caregivers, NGOs | -->
+<!-- | **Health Features** | Healthcare Advisory Board | Regulatory Bodies | Healthcare Providers, Senior Users | -->
+<!-- | **Privacy/Security Policies** | Privacy Officer | Legal Team, Regulatory Bodies | All Stakeholders | -->
+<!-- | **Budget Allocation** | Financial Stakeholders | Business Leadership | Project Management Team | -->
+<!-- | **Timeline/Milestones** | Project Manager | Business Stakeholders | Development Team, Key Stakeholders | -->
+<!-- | **Vendor Selection** | Procurement Lead | Technical Lead, Financial Stakeholders | Development Team | -->
+<!-- | **Go-to-Market Strategy** | Marketing Lead | Business Stakeholders | Healthcare Providers, Family, Caregivers | -->
+<!---->
+<!-- ### **Decision-Making Process** -->
+<!---->
+<!-- #### **Level 1: Operational Decisions (Daily Development)** -->
+<!---->
+<!-- **Authority:** Development Team Leads  -->
+<!---->
+<!-- **Process:** Agile methodology, daily standups, sprint planning  -->
+<!---->
+<!-- **Timeline:** Immediate to 2 weeks  -->
+<!---->
+<!-- **Documentation:** Sprint logs, technical documentation  -->
+<!---->
+<!-- **Review:** Weekly team retrospectives -->
+<!---->
+<!-- #### **Level 2: Tactical Decisions (Feature and Design)** -->
+<!---->
+<!-- **Authority:** Product Owner with Stakeholder Input -->
+<!---->
+<!-- **Process:** -->
+<!---->
+<!-- 1. Stakeholder consultation (1 week)   -->
+<!-- 2. Impact analysis (3-5 days)   -->
+<!-- 3. Decision documentation (2 days)   -->
+<!-- 4. Implementation planning (1 week)  -->
+<!---->
+<!-- **Timeline:** 2-4 weeks  -->
+<!---->
+<!-- **Documentation:** Decision records, impact assessments, implementation plans -->
+<!---->
+<!-- #### **Level 3: Strategic Decisions (Direction and Investment)** -->
+<!---->
+<!-- **Authority:** Business Stakeholders with Board Approval  -->
+<!---->
+<!-- **Process:** -->
+<!---->
+<!-- 1. Comprehensive stakeholder analysis (2-3 weeks)   -->
+<!-- 2. Business case development (1-2 weeks)   -->
+<!-- 3. Risk assessment (1 week)   -->
+<!-- 4. Board presentation and approval (1-2 weeks)   -->
+<!-- 5. Communication and implementation planning (1 week)  -->
+<!---->
+<!-- **Timeline:** 6-10 weeks  -->
+<!---->
+<!-- **Documentation:** Business cases, risk assessments, board minutes, communication plans -->
+<!---->
+<!-- ### **Decision-Making Philosophy** -->
+<!---->
+<!-- #### Stakeholder-Led Decision Making Strategy -->
+<!---->
+<!-- # At the core of our development philosophy is the principle that stakeholders should not merely be consulted—they should actively shape the product’s evolution. To achieve this, we have designed a participatory framework that embeds stakeholders into the decision-making process at every stage, ensuring their needs drive priorities while maintaining agility and technical feasibility.   -->
+<!---->
+<!-- #### Co-Design Councils: The Heart of Governance -->
+<!---->
+<!-- # A rotating council of elderly users, family members, and NGO representatives holds formal influence over product direction. Unlike traditional advisory boards, this group has veto power on critical UX decisions—such as interface accessibility or privacy controls—and scores proposed features to shape the development backlog. For example, when early testing revealed that video calls introduced complexity for users with limited dexterity, the council voted overwhelmingly to prioritize voice interaction refinements first. This structure ensures that those most affected by the robot’s design have measurable authority, not just symbolic input.   -->
+<!---->
+<!-- #### Continuous Feedback Loops, Powered by AI -->
+<!---->
+<!-- # To avoid stagnation between council meetings, real-time feedback flows through AI-curated channels. In-product prompts (e.g., “Was this reminder helpful?”) and discussions are analyzed by LLMs to distill sentiment trends and emergent needs. These insights trigger automated A/B tests—like adjusting game difficulty or reminder frequency—while major patterns are presented to the council for deliberation. If, for example, beta users expressed frustration with medication alerts, sentiment analysis would reveal a demand for customizable schedules, leading to a low-code interface that families could tailor remotely.   -->
+<!---->
+<!-- #### Radical Transparency for Accountability -->
+<!---->
+<!-- # Trust is maintained through public visibility into how stakeholder input translates into action. A live roadmap portal displays feature requests, voting results, and implementation status, while quarterly transparency reports detail how pilot data influenced decisions. Regulatory and healthcare partners receive dedicated audit trails, proving compliance with co-designed protocols. After caregivers reported that fall-detection false alarms caused undue stress, the engineering team published a breakdown of algorithm adjustments and invited stakeholders to retest the solution.   -->
+<!---->
+<!-- **graph** TD   -->
+<!--     A\[Feedback or New Need Identified\] **\--\>** B{What Type of Decision?}**;** -->
+<!---->
+<!--     B **\--** Operational **\--\>** C\[Dev Team: Quick Action & Fix\]**;**   -->
+<!--     C **\--\>** Z\[Change Implemented & Communicated\]**;** -->
+<!---->
+<!--     B **\--** Tactical (Features/UX) **\--\>** D\[Co-Design Council Review & Input\]**;**   -->
+<!--     D **\--\>** E\[Product Team: Decide & Implement\]**;**   -->
+<!--     E **\--\>** Z**;** -->
+<!---->
+<!--     B **\--** Strategic (Direction/Policy) **\--\>** F\[Business & Board: Review & Approve\]**;**   -->
+<!--     F **\--\>** G\[Leadership: Implement Decision\]**;**   -->
+<!--     G **\--\>** Z**;**   -->
+<!-- ![][image2] -->
+<!---->
+<!-- # 3\. Flowchart/System Architecture Diagram -->
+<!---->
+<!-- ![][image3] -->
+<!---->
+<!-- # 4\.  Resources Required for System Development -->
+<!---->
+<!-- Launching CompanionBot from prototype to full-scale deployment requires a coordinated combination of human capital, technical tools, infrastructure, and strategic partnerships. This chapter outlines the essential resources—tangible and intangible—necessary for a successful initial rollout. -->
+<!---->
+<!-- ## 1\. Human Resources -->
+<!---->
+<!-- ### Product team -->
+<!---->
+<!-- Product Owner / Product Manager – Prioritizes features and aligns user needs with technical capabilities. -->
+<!---->
+<!-- UX/UI Designer – Specializes in interfaces tailored for elderly users and individuals with cognitive impairments. -->
+<!---->
+<!-- User Researcher – Gathers insights through interviews, usability testing, and interaction analytics. -->
+<!---->
+<!-- Data Analyst – Analyzes behavioral data, conducts A/B testing, and generates hypotheses for product improvement. -->
+<!---->
+<!-- Stakeholder Liaison – Communicates with user councils, medical partners, families, and social workers. -->
+<!---->
+<!-- ### Development Team -->
+<!---->
+<!-- AI/ML Engineers — To implement emotion recognition, personalization, NLP, and adaptive learning algorithms. -->
+<!---->
+<!-- Data Scientists — For analyzing real-world feedback and fine-tuning AI behavior and decision-making logic. -->
+<!---->
+<!-- Software Developers — Skilled in Python, C, C++, Go, Rust, and embedded systems for backend integration and frontend interface. -->
+<!---->
+<!-- Hardware Engineers — To finalize robot shell, mobility components, and smart home integration features. -->
+<!---->
+<!-- QA Engineers — To test edge cases, accessibility scenarios, and interaction reliability. -->
+<!---->
+<!-- ### Specialized Roles -->
+<!---->
+<!-- Gerontologists & Geriatric Psychologists — To guide interaction models and validate mental health features. -->
+<!---->
+<!-- Clinical Advisors (MDs, RNs) — To verify medical protocol compliance (medication reminders, vital tracking). -->
+<!---->
+<!-- Speech-Language Pathologists — For evaluating voice interface clarity and communication design. -->
+<!---->
+<!-- Ethics and Privacy Consultants— To ensure adherence to HIPAA, GDPR, and ethical AI practices. -->
+<!---->
+<!-- Community Engagement Coordinators — To onboard elderly users, provide training, and gather feedback. -->
+<!---->
+<!-- ### Support & Operations -->
+<!---->
+<!-- Customer Support Staff — With training in elder tech use and empathetic communication. -->
+<!---->
+<!-- Sales and Partnership Managers — To drive institutional and healthcare adoption. -->
+<!---->
+<!-- Training Specialists — For family members and caregivers. -->
+<!---->
+<!-- ## 2\. Technical and Digital Infrastructure -->
+<!---->
+<!-- Hardware Components -->
+<!---->
+<!-- Final production version of CompanionBot device with: -->
+<!---->
+<!-- — High-resolution screen and wide-angle camera -->
+<!---->
+<!-- — Emotion-expressive LED facial interface -->
+<!---->
+<!-- — Microphone arrays with noise cancellation -->
+<!---->
+<!-- — Speakers with adjustable volume and voice clarity optimization -->
+<!---->
+<!-- — Embedded sensors (touch, motion, temperature, fall detection) -->
+<!---->
+<!-- — Long-life rechargeable battery with safety certification -->
+<!---->
+<!-- — Smart home integration modules (Wi-Fi, Bluetooth, Zigbee, etc.) -->
+<!---->
+<!-- — Telehealth peripherals integration (e.g., BP monitor, pulse oximeter, thermometer) -->
+<!---->
+<!-- Software Platforms -->
+<!---->
+<!-- — Natural Language Processing Engine:  -->
+<!---->
+<!-- Based on transformer architecture with advanced capabilities -->
+<!---->
+<!-- — Emotion Recognition Framework: -->
+<!---->
+<!-- Computer vision and vocal analysis pipeline -->
+<!---->
+<!-- — Behavioral Analytics Engine:  -->
+<!---->
+<!-- Real-time analysis of routines, habits, and engagement trends -->
+<!---->
+<!-- — System OS:  -->
+<!---->
+<!-- Lightweight, secure, modular operating system supporting OTA updates -->
+<!---->
+<!-- — User Interface:  -->
+<!---->
+<!-- Custom elderly-friendly launcher with customizable layouts -->
+<!---->
+<!-- — Data Sync & Cloud Services:  -->
+<!---->
+<!-- Secure AWS hosting with local fallback -->
+<!---->
+<!-- Data & Integration Tools -->
+<!---->
+<!-- — EHR/EMR Interoperability API layer (FHIR-compliant) -->
+<!---->
+<!-- — Caregiver dashboard (web and mobile) -->
+<!---->
+<!-- — Remote configuration and analytics tools for families -->
+<!---->
+<!-- — Voice control for accessibility -->
+<!---->
+<!-- ## 3\. Organizational and Business Resources -->
+<!---->
+<!-- Operational Needs -->
+<!---->
+<!-- — CRM and customer support platforms -->
+<!---->
+<!-- — Training modules for users and caregivers (digital \+ in-person) -->
+<!---->
+<!-- — Pilot program toolkit (onboarding, usage guides, evaluation metrics) -->
+<!---->
+<!-- Marketing & Outreach -->
+<!---->
+<!-- — Educational content explaining AI and robot ethics -->
+<!---->
+<!-- — Community events, webinars, and co-design workshops -->
+<!---->
+<!-- — Partnerships with elder care NGOs, clinics, and municipalities -->
+<!---->
+<!-- ## 4\. Financial Resources -->
+<!---->
+<!-- Initial Capital -->
+<!---->
+<!-- Seed or Series A funding to cover: -->
+<!---->
+<!-- — Manufacturing (pilot batch) -->
+<!---->
+<!-- — Team salaries (12–18 months runway) -->
+<!---->
+<!-- — Regulatory and certification costs -->
+<!---->
+<!-- — Legal, insurance, and compliance auditing -->
+<!---->
+<!-- — Marketing and community onboarding -->
+<!---->
+<!-- — Infrastructure (cloud, devices, integration licenses) -->
+<!---->
+<!-- Ongoing Funding Strategy -->
+<!---->
+<!-- — Grants from public health and aging-focused institutions -->
+<!---->
+<!-- — Strategic corporate partnerships (e.g., smart home vendors, insurers) -->
+<!---->
+<!-- — Subscription revenue and B2B sales (senior care homes, health systems) -->
+<!---->
+<!-- ## 5\. Legal and Compliance Resources -->
+<!---->
+<!-- — Accessibility audit and WCAG 2.1 testing tools -->
+<!---->
+<!-- — Regulatory consultant team for device certifications (FDA/CE if applicable) -->
+<!---->
+<!-- — Consent management frameworks for families and healthcare providers -->
+<!---->
+<!-- ## 6\. Launch-Ready Metrics and KPIs -->
+<!---->
+<!-- To evaluate resource adequacy and deployment readiness, the following benchmarks must be met: -->
+<!---->
+<!-- — 95%+ success rate in daily use test scenarios with seniors -->
+<!---->
+<!-- — 90% of Co-Design Council UX priorities implemented -->
+<!---->
+<!-- — 100% of privacy and regulatory protocols certified -->
+<!---->
+<!-- — Functional integration with at least 3 EHR systems -->
+<!---->
+<!-- — Scalable cloud infrastructure deployed in 2+ regions -->
+<!---->
+<!-- — Fully trained customer support and caregiver enablement teams -->
+<!---->
+<!-- — Positive sentiment in \>80% of beta tester feedback sessions -->
+<!---->
+<!-- Ecosystem -->
+<!---->
+<!-- A successful CompanionBot launch requires more than just technology — it requires a full ecosystem of specialized expertise, empathetic design, trusted infrastructure, and inclusive partnerships.  -->
+<!---->
+<!-- By ensuring these resources are secured and aligned with the system's mission, we can deliver not just a product, but a meaningful support system for the aging population. -->
+<!---->
+<!-- # 5\. A detailed list of tasks – and a link to the required resources -->
+<!---->
+<!-- In that part we describe a structured, detailed breakdown of all specific tasks ((engineering, design, training, validation, etc.), fulfilling of which will lead to successful project performing. Apart from that, we will show responsible roles or teams assigned to each task, as well as what resources are crucial, for example infrastructure, tools, skills, stakeholders. -->
+<!---->
+<!-- The table outlines the major developmental tasks for CompanionBot, aligned with: corresponding human resources, as well as technical, and organizational resources required for execution. For each of the tasks we pointed to the LLM reference as it is a core functionality of the system. -->
+<!---->
+<!-- Tasks are organized based on system components, e.g., conversation UI, health monitoring, emotion recognition, etc., which are based directly on the modules and features of our system. -->
+<!---->
+<!-- | Task ID | Task Description | Responsible Role(s) | Required Resources | LLM Contribution | Impact on user experience | Development Phase | -->
+<!-- | ----- | ----- | ----- | ----- | ----- | ----- | ----- | -->
+<!-- | T1 | Define user scenarios & elderly personas | UX Designer, Gerontologist | Stakeholder input, Co-design council feedback | Not directly involved in this phase, but user data helps fine-tune future prompts and personalization logic. | Scenarios built here guide how LLM conversations align with real user needs. | Phase 1 | -->
+<!-- | T2 | Design conversational UI (voice interface) | UX Designer, Speech Pathologist | GPT-based LLM, voice SDKs | Drives natural and context-rich dialogue via fine-tuned LLM  | Allows seniors to hold meaningful daily conversations with the robo | Phase 2 | -->
+<!-- | T3 | Develop emotion recognition module | AI/ML Engineer | GPU infrastructure, camera, dataset for emotions | The LLM uses emotional input (voice tone, facial expression, textual sentiment) to adapt its language generation in real-time — expressing empathy, changing tone, or adjusting conversation flow. LLM also helps in labeling or classifying emotional context during post-processing and learning loops. | Users feel emotionally understood and cared for. The robot’s ability to respond with warmth, support, or cheer based on emotional state builds trust and reduces feelings of loneliness. Emotional alignment is key to senior engagement. | Phase 2 | -->
+<!-- | T4 | Program medication reminder logic | Software Developer, MD Advisor | Medication protocols, NLP engine | Generates adaptive and polite reminder phrasing using prompt engineering | Improves medication adherence through trust and tone personalization | Phase 2 | -->
+<!-- | T5 | Implement video calling & photo sharing features | Software Developer, UI Designer | Camera integration, UI frameworks | Helps narrate and format photo captions or life stories using natural language | Assists seniors in building digital memoirs without typing or technical complexity | Phase 3 | -->
+<!-- | T6 | Build smart home control module | Embedded System Engineer | IoT SDKs, Zigbee/Bluetooth modules | Converts natural spoken commands into smart home actions via voice interface. | Users feel empowered controlling their home by speaking casually, with no technical knowledge. | Phase 3 | -->
+<!-- | T7 | Design and train cognitive games | AI/ML Engineer, Cognitive Psychologist | Puzzle DB, training datasets | Creates or adapts word games, storytelling prompts, quizzes dynamically | Keeps engagement fresh and tailored to cognitive ability levels | Phase 3 | -->
+<!-- | T8 | Integrate health sensors (e.g., BP monitor) | Hardware Engineer, RN/MD | Health devices, API integration | Explains health data to the user in understandable language; answers health-related questions conversationally. | Increases users' sense of control over their health; reduces confusion or anxiety. | Phase 3 | -->
+<!-- | T9 | Perform clinical safety validation | QA Engineer, Clinical Advisor | Test environments, elderly beta testers | N/A | N/A | Phase 4 | -->
+<!-- | T10 | Ensure data encryption and HIPAA compliance | Privacy Officer, DevSecOps | Security framework | Handles sensitive discussions like data use or family sharing in clear language | Boosts trust and comprehension of legal/ethical concepts | Phase 4 | -->
+<!-- | T11 | Conduct usability testing with seniors | User Researcher, Support Staff | Demo units, testing labs | LLM interprets real-time user feedback during sessions | Enables rapid personalization and identifies frustration triggers | Phase 4 | -->
+<!-- | T12 | Deploy pilot version in test homes | Ops Team, Customer Support | 10-20 pilot units, feedback tracking | Analyzes in-product textual or verbal feedback for sentiment/emotion detection | Allows automatic system adaptation based on user satisfaction | Phase 5 | -->
+<!-- | T13 | Train caregivers and family on dashboard | Training Specialist | Online modules, guides, live support | LLM acts as an assistant to explain dashboard elements conversationally or via chatbot. | *Reduces technical barriers for family/caregivers; improves support continuity.* | Phase 5 | -->
+<!-- | T14 | Final QA \+ bug fixing pre-launch | QA Team, Dev Team | Issue tracker, test automation suite | Used for automated log summarization or detecting anomalies in user logs (e.g., misunderstanding patterns)*.* | Ensures smoother, more stable interactions with minimal breakdowns. | Phase 6 | -->
+<!-- | T15 | Launch CompanionBot \+ onboarding campaign | Marketing, Sales, Support | CRM, webinars, NGO partnerships | LLM supports onboarding script personalization and FAQ chatbot for new users and families. | Reduces onboarding stress and improves adoption rates across different cognitive levels.  | Phase 6 | -->
+<!---->
+<!-- # **6\. Evaluation of Scheduling and Prioritization of Tasks and Resources** -->
+<!---->
+<!-- ## **1\. Framework Overview** -->
+<!---->
+<!-- The CompanionBot project represents a complex AI-driven healthcare technology initiative requiring sophisticated resource management and task prioritization strategies. This evaluation examines the systematic approach to scheduling and resource allocation that ensures optimal project outcomes while maintaining quality standards and regulatory compliance. The framework balances stakeholder needs, technical constraints, and market demands through a multi-dimensional approach that considers human capital, technical infrastructure, financial resources, and time dependencies. -->
+<!---->
+<!-- The success of CompanionBot depends not only on resource availability but also on strategic allocation and implementation of robust prioritization mechanisms that adapt to changing requirements and emerging challenges in elderly care technology development. -->
+<!---->
+<!-- ## **2\. Resource Classification and Strategic Allocation** -->
+<!---->
+<!-- ### **Human Resource Distribution** -->
+<!---->
+<!-- The project's human resource strategy follows a structured hierarchy ensuring optimal skill utilization while maintaining clear accountability. The allocation reflects the project's emphasis on user-centered design and regulatory compliance. -->
+<!---->
+<!-- | Resource Category | Allocation | Priority Level | Key Roles | Timeline Focus | -->
+<!-- | :---- | :---- | :---- | :---- | :---- | -->
+<!-- | Product Leadership | 15% | Critical | Product Manager, UX Designer, User Researcher | Phases 1-6 | -->
+<!-- | Core Development | 35% | Critical | AI/ML Engineers, Software Developers, Hardware Engineers | Phases 2-5 | -->
+<!-- | Specialized Expertise | 20% | High | Data Scientists, QA Engineers, Gerontologists | Phases 3-6 | -->
+<!-- | Clinical Advisory | 10% | High | MDs, RNs, Speech-Language Pathologists | Phases 2-4 | -->
+<!-- | Compliance & Ethics | 8% | Critical | Privacy Officers, Ethics Advisors | Phases 1-6 | -->
+<!-- | Support Operations | 12% | Medium | Customer Support, Training Specialists | Phases 5-6 | -->
+<!---->
+<!-- ### **Technical Infrastructure Prioritization** -->
+<!---->
+<!-- Technical infrastructure represents a significant investment requiring careful prioritization to ensure scalability and reliability. The allocation follows a risk-based approach where critical components affecting user safety and regulatory compliance receive highest priority. -->
+<!---->
+<!-- | Infrastructure Component | Investment Range | Priority | Implementation Dependencies | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | Hardware Development | $2.5M \- $4M | Critical | Industrial design, component sourcing | -->
+<!-- | AI/ML Platform | $800K \- $1.2M | Critical | Data collection, model training | -->
+<!-- | Security Framework | $400K \- $600K | Critical | Legal compliance, data protection | -->
+<!-- | Cloud Infrastructure | $300K \- $500K annually | High | Security certification, HIPAA compliance | -->
+<!-- | Integration APIs | $200K \- $400K | High | EHR partnerships, smart home vendors | -->
+<!-- | Testing Environment | $150K \- $250K | Medium | Hardware prototypes, user testing | -->
+<!---->
+<!-- ## 3\. Task Prioritization Methodology -->
+<!---->
+<!-- ### Multi-Criteria Decision Framework -->
+<!---->
+<!-- The project employs a sophisticated scoring system that evaluates tasks based on multiple dimensions, ensuring systematic and transparent resource allocation decisions. -->
+<!---->
+<!-- | Evaluation Criteria | Weight | Description | Scoring Impact | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | User Impact | 25% | Direct benefit to elderly users and families | Primary driver for feature selection | -->
+<!-- | Technical Feasibility | 20% | Implementation complexity and risk assessment | Prevents over-commitment to unrealistic features | -->
+<!-- | Regulatory Compliance | 20% | Alignment with HIPAA, GDPR, safety requirements | Ensures legal adherence and market access | -->
+<!-- | Stakeholder Value | 15% | Benefit to healthcare providers and caregivers | Supports ecosystem adoption | -->
+<!-- | Market Differentiation | 10% | Competitive advantage and unique value | Drives commercial success | -->
+<!-- | Resource Efficiency | 10% | Cost-effectiveness and optimization | Maintains budget discipline | -->
+<!---->
+<!-- ### Feature Development Priority Tiers -->
+<!---->
+<!-- Based on the multi-criteria framework, features are categorized into priority tiers that guide development scheduling and resource allocation. -->
+<!---->
+<!-- | Priority Tier | Features | Resource Allocation | Justification | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | Tier 1 (Critical) | Basic conversation, medication reminders, emergency alerts | 40% | Core safety and companionship functions | -->
+<!-- | Tier 2 (High) | Health monitoring, family communication, cognitive games | 35% | Enhanced value proposition | -->
+<!-- | Tier 3 (Medium) | Smart home integration, advanced AI personalization | 20% | Competitive differentiation | -->
+<!-- | Tier 4 (Low) | Advanced entertainment, complex social features | 5% | Future enhancement opportunities | -->
+<!---->
+<!-- ## 4\. Development Timeline and Critical Path Management -->
+<!---->
+<!-- ### Phase-Based Development Schedule -->
+<!---->
+<!-- The development follows a structured timeline that aligns resource allocation with project milestones and stakeholder deliverables, providing flexibility for iterative development while maintaining accountability. -->
+<!---->
+<!-- | Phase | Duration | Key Deliverables | Resource Focus | Success Metrics | -->
+<!-- | :---- | :---- | :---- | :---- | :---- | -->
+<!-- | Phase 1: Foundation | 3 months | Requirements, architecture, team assembly | Product team, infrastructure | Stakeholder approval, technical feasibility | -->
+<!-- | Phase 2: Core Development | 6 months | Basic AI, hardware prototype, safety features | Development team, clinical advisors | Functional prototype, safety validation | -->
+<!-- | Phase 3: Integration | 4 months | System integration, initial testing | Full team, testing infrastructure | Integration testing, user acceptance | -->
+<!-- | Phase 4: Validation | 3 months | Clinical trials, regulatory approval | Compliance team, clinical partners | Regulatory clearance, user validation | -->
+<!-- | Phase 5: Pilot Deployment | 2 months | Limited release, user training | Support team, training specialists | User adoption, feedback collection | -->
+<!-- | Phase 6: Full Launch | 2 months | Market launch, scaling operations | Marketing, operations team | Market penetration, operational efficiency | -->
+<!---->
+<!-- ### Critical Path Analysis -->
+<!---->
+<!-- Critical path management focuses on activities that directly impact overall project timeline and require priority resource allocation. -->
+<!---->
+<!-- | Critical Activity | Duration | Resource Requirements | Risk Factors | Mitigation Strategy | -->
+<!-- | :---- | :---- | :---- | :---- | :---- | -->
+<!-- | AI Model Development | 4 months | 3 AI engineers, compute resources | Model performance, training data quality | Parallel algorithm development, data augmentation | -->
+<!-- | Hardware Certification | 3 months | Hardware team, testing lab | Regulatory approval, component availability | Early prototype testing, supplier diversification | -->
+<!-- | Clinical Validation | 2 months | Clinical advisors, test sites | User acceptance, health outcome validation | Phased testing approach, multiple validation sites | -->
+<!-- | Security Audit | 1.5 months | Security team, external auditors | Vulnerability discovery, compliance gaps | Continuous security testing, expert consultation | -->
+<!---->
+<!-- ## 5\. Performance Monitoring and Optimization -->
+<!---->
+<!-- ### Resource Utilization Metrics -->
+<!---->
+<!-- Effective resource management requires continuous monitoring of utilization rates and efficiency metrics to identify optimization opportunities and ensure project objectives are met within constraints. -->
+<!---->
+<!-- | Metric Category | Specific Metrics | Target Range | Monitoring Frequency | Corrective Actions | -->
+<!-- | :---- | :---- | :---- | :---- | :---- | -->
+<!-- | Budget Utilization | Spend rate, variance from plan | ±5% of planned | Weekly | Budget reallocation, scope adjustment | -->
+<!-- | Timeline Adherence | Milestone completion, critical path delays | 95% on-time | Daily | Resource reallocation, parallel activities | -->
+<!-- | Team Productivity | Story points completed, velocity trends | 85-110% of baseline | Sprint cycles | Team optimization, skill development | -->
+<!-- | Quality Metrics | Defect rates, user acceptance scores | \<2% defects, \>90% acceptance | Continuous | Quality process improvement | -->
+<!-- | Stakeholder Satisfaction | Feedback scores, engagement levels | \>80% satisfaction | Monthly | Communication improvement, expectation management | -->
+<!---->
+<!-- Dynamic Resource Allocation Strategy -->
+<!---->
+<!-- The project implements dynamic allocation strategies that allow flexible redistribution based on changing priorities, emerging challenges, and opportunity identification. -->
+<!---->
+<!-- | Trigger Event | Response Strategy | Resource Impact | Timeline Adjustment | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | Technical Breakthrough | Accelerate related development | \+20% to breakthrough area | Potential timeline compression | -->
+<!-- | Regulatory Delay | Shift focus to parallel activities | Reallocate compliance resources | Maintain overall timeline | -->
+<!-- | User Feedback | Prioritize user-requested features | Adjust feature development allocation | Minor timeline impact | -->
+<!-- | Competitive Pressure | Accelerate differentiation features | \+15% to competitive features | Potential scope adjustment | -->
+<!---->
+<!-- ## 6\. Financial Resource Management and Risk Mitigation -->
+<!---->
+<!-- ### Budget Allocation and Optimization -->
+<!---->
+<!-- The financial framework balances immediate development needs with long-term sustainability requirements while maintaining adequate reserves for risk management. -->
+<!---->
+<!-- | Budget Category | Percentage | Amount Range | Justification | Optimization Strategy | -->
+<!-- | :---- | :---- | :---- | :---- | :---- | -->
+<!-- | Personnel Costs | 60% | $3.6M \- $6M | Core team expertise, specialized skills | Agile development, skill sharing | -->
+<!-- | Technology Infrastructure | 20% | $1.2M \- $2M | Hardware, software, cloud services | Open source integration, partnerships | -->
+<!-- | Compliance & Legal | 8% | $480K \- $800K | Regulatory requirements, IP protection | Early compliance planning, automation | -->
+<!-- | Marketing & Sales | 7% | $420K \- $700K | Market entry, customer acquisition | Digital marketing, strategic partnerships | -->
+<!-- | Operations & Support | 3% | $180K \- $300K | Customer service, maintenance | Self-service tools, automation | -->
+<!-- | Contingency | 2% | $120K \- $200K | Risk mitigation, unexpected costs | Risk-based allocation, flexible reserves | -->
+<!---->
+<!-- ## 7\. Quality Assurance and Compliance Resource Allocation -->
+<!---->
+<!-- ### Quality-Driven Resource Distribution -->
+<!---->
+<!-- Quality assurance requires dedicated allocation across all development phases to ensure safety, usability, and reliability standards for elderly care applications. -->
+<!---->
+<!-- | QA Activity | Resource Allocation | Quality Metrics | Success Criteria | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | Requirements Validation | 10% of QA budget | Requirements coverage, stakeholder approval | 100% requirement validation | -->
+<!-- | Design Review | 15% of QA budget | Design compliance, usability scores | 95% design approval rate | -->
+<!-- | Code Quality | 25% of QA budget | Code coverage, defect density | \<2 defects per KLOC | -->
+<!-- | Integration Testing | 20% of QA budget | System integration success | 98% integration test pass rate | -->
+<!-- | User Acceptance | 20% of QA budget | User satisfaction, usability metrics | 90% user acceptance rate | -->
+<!-- | Compliance Validation | 10% of QA budget | Regulatory compliance, security audit | 100% compliance certification | -->
+<!---->
+<!-- ### Risk-Based Testing Strategy -->
+<!---->
+<!-- Testing strategy prioritizes high-risk areas that could impact user safety or system reliability, ensuring critical functionality receives appropriate resources. -->
+<!---->
+<!-- | Risk Area | Risk Level | Testing Resources | Acceptance Criteria | -->
+<!-- | :---- | :---- | :---- | :---- | -->
+<!-- | Medication Reminders | Critical | 30% of testing budget | 99.9% reliability | -->
+<!-- | Emergency Alerts | Critical | 25% of testing budget | 100% alert delivery | -->
+<!-- | Health Data Security | Critical | 20% of testing budget | Zero security vulnerabilities | -->
+<!-- | User Interface | High | 15% of testing budget | 95% usability score | -->
+<!-- | AI Interactions | High | 10% of testing budget | 90% appropriate response rate | -->
+<!---->
+<!-- ### **7\. Dependency Identification** -->
+<!---->
+<!-- The successful implementation of CompanionBot relies on the coordinated interaction of multiple technical systems, organizational roles, external vendors, and regulatory frameworks. Identifying and managing these dependencies early is essential to ensure uninterrupted development, maintain system integrity, and support compliance with safety and privacy standards. -->
+<!---->
+<!-- #### **7.1 Technical Dependencies** -->
+<!---->
+<!-- CompanionBot's architecture involves layered interdependence between AI modules, hardware components, and external integrations: -->
+<!---->
+<!-- **Large Language Model (LLM) API**: All conversational, emotional, and adaptive personalization features are dependent on the performance and availability of the LLM engine.  -->
+<!---->
+<!-- **Health Monitoring Sensors**: CompanionBot’s integration with medical peripherals (e.g., blood pressure monitors, oximeters) is dependent on device-specific APIs and reliable Bluetooth/Zigbee communication protocols. -->
+<!---->
+<!-- **AWS Cloud Synchronization**: System behavior depends on stable cloud connectivity for data persistence, analytics, and user profile management, with fallback mechanisms for offline usage. -->
+<!---->
+<!-- **Telehealth and EHR Integration**: Interoperability with external health systems (FHIR APIs) requires alignment with third-party update cycles and interface changes. -->
+<!---->
+<!-- #### **7.2 Organizational and Process Dependencies** -->
+<!---->
+<!-- **Stakeholder Feedback Loops**: The Co-Design Council and caregiver testing groups play a central role in interface and feature prioritization. Development sprints depend on timely input and validation cycles. -->
+<!---->
+<!-- **Cross-Team Coordination**: Seamless delivery requires synchronization between AI/ML, UX, clinical advisors and various consultants. Bottlenecks in one team may delay dependent components. -->
+<!---->
+<!-- **Training Resources for Families and Caregivers**: Deployment success depends on the creation and dissemination of training modules, which are reliant on the availability of support staff and content specialists. -->
+<!---->
+<!-- #### **7.3 Vendor and Regulatory Dependencies** -->
+<!---->
+<!-- **Hardware Supply Chain**: All hardware components are sourced externally. Delays in component delivery can affect assembly and testing milestones. -->
+<!---->
+<!-- **Compliance Certifications**: Deployment hinges on timely security audits and HIPAA/SOC2 validations, which require coordination with external compliance experts and auditors. -->
+<!---->
+<!-- **Partnerships with Elder-Care Facilities, Clinics and NGOs**: Access to pilot environments and user feedback is contingent on third-party collaboration timelines, legal agreements, and site-specific onboarding procedures. -->
+<!---->
+<!-- #### **7.4 Mitigation Strategies** -->
+<!---->
+<!-- To manage these dependencies, the project team applies several tactics: -->
+<!---->
+<!-- **Live Dependency Register**: Maintained by the Project Manager and updated at each sprint planning session; tracks technical, legal, and logistical dependencies by module and development phase. -->
+<!---->
+<!-- **Fallback Planning**: Local-only operation modes are implemented for critical features like medication reminders and emergency alerts in case of cloud failure or API disruption. -->
+<!---->
+<!-- **Parallel Workstreams**: Tasks are decoupled where possible to allow non-blocking progress, e.g., UX testing on synthetic data while waiting for clinical validation. -->
+<!---->
+<!-- **Automated Monitoring**: Integration of build systems and testing pipelines with dependency scanning tools ensures early detection of version conflicts or broken integrations. -->
+<!---->
+<!-- By proactively identifying and addressing interdependencies, CompanionBot ensures stable progress across all development phases, while maintaining flexibility to adapt to external or internal changes. -->
+<!---->
+<!-- ### **8\. Identification and Assessment of Risks (in Terms of Resources)** -->
+<!---->
+<!-- Effective resource management for CompanionBot requires not only accurate allocation but also early detection of risks that may jeopardize delivery, compliance, or system stability. This section outlines key risk domains associated with human, technical, financial, and regulatory resources, alongside assessment metrics and mitigation strategies. -->
+<!---->
+<!-- #### **1\. Human Resource Risks** -->
+<!---->
+<!-- **Risk: Skill Gaps in Specialized Roles** -->
+<!---->
+<!-- *Description*: Limited availability of AI/ML engineers, gerontologists, and compliance officers with relevant expertise may delay module implementation (e.g., emotion recognition, HIPAA alignment). -->
+<!---->
+<!-- *Likelihood*: High -->
+<!---->
+<!-- *Impact*: Critical for core functionality -->
+<!---->
+<!-- *Mitigation*: Maintain expert advisory pool, invest in parallel onboarding, cross-train team members. -->
+<!---->
+<!-- **Risk: Resource Turnover During Development** -->
+<!---->
+<!-- *Description*: Unexpected departure of key team members (e.g., Product Owner, UX Lead) could disrupt project continuity and stakeholder alignment. -->
+<!---->
+<!-- *Likelihood*: Medium -->
+<!---->
+<!-- *Impact*: High on coordination and velocity -->
+<!---->
+<!-- *Mitigation*: Maintain updated documentation, implement succession plans, ensure knowledge redundancy. -->
+<!---->
+<!-- #### **2\. Technical Resource Risks** -->
+<!---->
+<!-- **Risk: GPU Infrastructure Limitations** -->
+<!---->
+<!-- *Description*: High computational demand for LLM inference and training could exceed available GPU resources, affecting emotion-aware responses and adaptive personalization. -->
+<!---->
+<!-- *Likelihood*: Medium -->
+<!---->
+<!-- *Impact*: High on AI performance -->
+<!---->
+<!-- *Mitigation*: Use scalable cloud compute, prioritize model optimization, secure compute credits from providers. -->
+<!---->
+<!-- **Risk: Hardware Supply Delays** -->
+<!---->
+<!-- *Description*: Delays in delivery of essential components (e.g., LED facial modules, embedded sensors) could stall prototyping and testing phases. -->
+<!---->
+<!-- *Likelihood*: High -->
+<!---->
+<!-- *Impact*: Medium to high -->
+<!---->
+<!-- *Mitigation*: Identify backup suppliers, pre-order critical parts, use modular hardware design. -->
+<!---->
+<!-- #### **3\. Financial Resource Risks** -->
+<!---->
+<!-- **Risk: Budget Overrun Due to Compliance and Validation Costs** -->
+<!---->
+<!-- *Description*: Costs associated with legal certification, audits, and regulatory documentation may exceed initial estimates. -->
+<!---->
+<!-- *Likelihood*: Medium -->
+<!---->
+<!-- *Impact*: High on launch schedule -->
+<!---->
+<!-- *Mitigation*: Reserve contingency budget (5–10%), engage compliance experts early, pursue co-funding opportunities (grants, institutional partners). -->
+<!---->
+<!-- **Risk: Inadequate Funding for Support and Training** -->
+<!---->
+<!-- *Description*: Underfunding post-deployment training for caregivers and families may reduce adoption and increase dropout rates. -->
+<!---->
+<!-- *Likelihood*: Medium -->
+<!---->
+<!-- *Impact*: High on user satisfaction and system continuity -->
+<!---->
+<!-- *Mitigation*: Allocate specific budget to onboarding, integrate LLM-powered training assistants, monitor training outcomes. -->
+<!---->
+<!-- #### **4\. Regulatory and Partnership Risks** -->
+<!---->
+<!-- **Risk: Delay in Certification or Audit Outcomes** -->
+<!---->
+<!-- *Description*: Slower-than-expected regulatory feedback (e.g., HIPAA, CE) could delay launch or limit scope of deployment. -->
+<!---->
+<!-- *Likelihood*: Medium -->
+<!---->
+<!-- *Impact*: High on go-to-market readiness                                      -->
+<!-- *Mitigation*: Begin audit preparation in parallel with development, prioritize documentation, establish direct communication channels with auditors. -->
+<!---->
+<!-- **Risk: Stakeholder Partnership Withdrawal** -->
+<!---->
+<!-- *Description*: Key pilot partners (e.g., care homes or NGOs) may withdraw due to internal priorities or strategic changes. -->
+<!---->
+<!-- *Likelihood*: Low to medium -->
+<!---->
+<!-- *Impact*: Medium on pilot phase -->
+<!---->
+<!-- *Mitigation*: Diversify pilot sites, maintain regular engagement with partners, sign flexible MoUs. -->
+<!---->
+<!-- #### **5\. Risk Monitoring and Reporting** -->
+<!---->
+<!-- CompanionBot applies a continuous risk-tracking model: -->
+<!---->
+<!-- **Risk Register** maintained by the project management team, updated biweekly. -->
+<!---->
+<!-- **Risk Heat Maps** used to visualize severity vs. likelihood across categories. -->
+<!---->
+<!-- **LLM-Based Analysis** applied to project communications and logs to detect signals of emerging risks (e.g., unmet deadlines, reduced output velocity). -->
+<!---->
+<!-- **Monthly Risk Review Meetings** with representatives from product, compliance, AI, and stakeholder teams to realign mitigation actions. -->
+<!---->
+<!-- By embedding risk identification into all resource management activities, CompanionBot team ensures stable progress under realistic constraints and supports a proactive rather than reactive delivery model. -->
+</section>
+</section>
+
+</main>
+<!-- /main column -->
+<script id="quarto-html-after-body" type="application/javascript">
+window.document.addEventListener("DOMContentLoaded", function (event) {
+  const toggleBodyColorMode = (bsSheetEl) => {
+    const mode = bsSheetEl.getAttribute("data-mode");
+    const bodyEl = window.document.querySelector("body");
+    if (mode === "dark") {
+      bodyEl.classList.add("quarto-dark");
+      bodyEl.classList.remove("quarto-light");
+    } else {
+      bodyEl.classList.add("quarto-light");
+      bodyEl.classList.remove("quarto-dark");
+    }
+  }
+  const toggleBodyColorPrimary = () => {
+    const bsSheetEl = window.document.querySelector("link#quarto-bootstrap");
+    if (bsSheetEl) {
+      toggleBodyColorMode(bsSheetEl);
+    }
+  }
+  toggleBodyColorPrimary();  
+  const icon = "";
+  const anchorJS = new window.AnchorJS();
+  anchorJS.options = {
+    placement: 'right',
+    icon: icon
+  };
+  anchorJS.add('.anchored');
+  const isCodeAnnotation = (el) => {
+    for (const clz of el.classList) {
+      if (clz.startsWith('code-annotation-')) {                     
+        return true;
+      }
+    }
+    return false;
+  }
+  const onCopySuccess = function(e) {
+    // button target
+    const button = e.trigger;
+    // don't keep focus
+    button.blur();
+    // flash "checked"
+    button.classList.add('code-copy-button-checked');
+    var currentTitle = button.getAttribute("title");
+    button.setAttribute("title", "Copied!");
+    let tooltip;
+    if (window.bootstrap) {
+      button.setAttribute("data-bs-toggle", "tooltip");
+      button.setAttribute("data-bs-placement", "left");
+      button.setAttribute("data-bs-title", "Copied!");
+      tooltip = new bootstrap.Tooltip(button, 
+        { trigger: "manual", 
+          customClass: "code-copy-button-tooltip",
+          offset: [0, -8]});
+      tooltip.show();    
+    }
+    setTimeout(function() {
+      if (tooltip) {
+        tooltip.hide();
+        button.removeAttribute("data-bs-title");
+        button.removeAttribute("data-bs-toggle");
+        button.removeAttribute("data-bs-placement");
+      }
+      button.setAttribute("title", currentTitle);
+      button.classList.remove('code-copy-button-checked');
+    }, 1000);
+    // clear code selection
+    e.clearSelection();
+  }
+  const getTextToCopy = function(trigger) {
+      const codeEl = trigger.previousElementSibling.cloneNode(true);
+      for (const childEl of codeEl.children) {
+        if (isCodeAnnotation(childEl)) {
+          childEl.remove();
+        }
+      }
+      return codeEl.innerText;
+  }
+  const clipboard = new window.ClipboardJS('.code-copy-button:not([data-in-quarto-modal])', {
+    text: getTextToCopy
+  });
+  clipboard.on('success', onCopySuccess);
+  if (window.document.getElementById('quarto-embedded-source-code-modal')) {
+    const clipboardModal = new window.ClipboardJS('.code-copy-button[data-in-quarto-modal]', {
+      text: getTextToCopy,
+      container: window.document.getElementById('quarto-embedded-source-code-modal')
+    });
+    clipboardModal.on('success', onCopySuccess);
+  }
+    var localhostRegex = new RegExp(/^(?:http|https):\/\/localhost\:?[0-9]*\//);
+    var mailtoRegex = new RegExp(/^mailto:/);
+      var filterRegex = new RegExp('/' + window.location.host + '/');
+    var isInternal = (href) => {
+        return filterRegex.test(href) || localhostRegex.test(href) || mailtoRegex.test(href);
+    }
+    // Inspect non-navigation links and adorn them if external
+ 	var links = window.document.querySelectorAll('a[href]:not(.nav-link):not(.navbar-brand):not(.toc-action):not(.sidebar-link):not(.sidebar-item-toggle):not(.pagination-link):not(.no-external):not([aria-hidden]):not(.dropdown-item):not(.quarto-navigation-tool):not(.about-link)');
+    for (var i=0; i<links.length; i++) {
+      const link = links[i];
+      if (!isInternal(link.href)) {
+        // undo the damage that might have been done by quarto-nav.js in the case of
+        // links that we want to consider external
+        if (link.dataset.originalHref !== undefined) {
+          link.href = link.dataset.originalHref;
+        }
+      }
+    }
+  function tippyHover(el, contentFn, onTriggerFn, onUntriggerFn) {
+    const config = {
+      allowHTML: true,
+      maxWidth: 500,
+      delay: 100,
+      arrow: false,
+      appendTo: function(el) {
+          return el.parentElement;
+      },
+      interactive: true,
+      interactiveBorder: 10,
+      theme: 'quarto',
+      placement: 'bottom-start',
+    };
+    if (contentFn) {
+      config.content = contentFn;
+    }
+    if (onTriggerFn) {
+      config.onTrigger = onTriggerFn;
+    }
+    if (onUntriggerFn) {
+      config.onUntrigger = onUntriggerFn;
+    }
+    window.tippy(el, config); 
+  }
+  const noterefs = window.document.querySelectorAll('a[role="doc-noteref"]');
+  for (var i=0; i<noterefs.length; i++) {
+    const ref = noterefs[i];
+    tippyHover(ref, function() {
+      // use id or data attribute instead here
+      let href = ref.getAttribute('data-footnote-href') || ref.getAttribute('href');
+      try { href = new URL(href).hash; } catch {}
+      const id = href.replace(/^#\/?/, "");
+      const note = window.document.getElementById(id);
+      if (note) {
+        return note.innerHTML;
+      } else {
+        return "";
+      }
+    });
+  }
+  const xrefs = window.document.querySelectorAll('a.quarto-xref');
+  const processXRef = (id, note) => {
+    // Strip column container classes
+    const stripColumnClz = (el) => {
+      el.classList.remove("page-full", "page-columns");
+      if (el.children) {
+        for (const child of el.children) {
+          stripColumnClz(child);
+        }
+      }
+    }
+    stripColumnClz(note)
+    if (id === null || id.startsWith('sec-')) {
+      // Special case sections, only their first couple elements
+      const container = document.createElement("div");
+      if (note.children && note.children.length > 2) {
+        container.appendChild(note.children[0].cloneNode(true));
+        for (let i = 1; i < note.children.length; i++) {
+          const child = note.children[i];
+          if (child.tagName === "P" && child.innerText === "") {
+            continue;
+          } else {
+            container.appendChild(child.cloneNode(true));
+            break;
+          }
+        }
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(container);
+        }
+        return container.innerHTML
+      } else {
+        if (window.Quarto?.typesetMath) {
+          window.Quarto.typesetMath(note);
+        }
+        return note.innerHTML;
+      }
+    } else {
+      // Remove any anchor links if they are present
+      const anchorLink = note.querySelector('a.anchorjs-link');
+      if (anchorLink) {
+        anchorLink.remove();
+      }
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(note);
+      }
+      if (note.classList.contains("callout")) {
+        return note.outerHTML;
+      } else {
+        return note.innerHTML;
+      }
+    }
+  }
+  for (var i=0; i<xrefs.length; i++) {
+    const xref = xrefs[i];
+    tippyHover(xref, undefined, function(instance) {
+      instance.disable();
+      let url = xref.getAttribute('href');
+      let hash = undefined; 
+      if (url.startsWith('#')) {
+        hash = url;
+      } else {
+        try { hash = new URL(url).hash; } catch {}
+      }
+      if (hash) {
+        const id = hash.replace(/^#\/?/, "");
+        const note = window.document.getElementById(id);
+        if (note !== null) {
+          try {
+            const html = processXRef(id, note.cloneNode(true));
+            instance.setContent(html);
+          } finally {
+            instance.enable();
+            instance.show();
+          }
+        } else {
+          // See if we can fetch this
+          fetch(url.split('#')[0])
+          .then(res => res.text())
+          .then(html => {
+            const parser = new DOMParser();
+            const htmlDoc = parser.parseFromString(html, "text/html");
+            const note = htmlDoc.getElementById(id);
+            if (note !== null) {
+              const html = processXRef(id, note);
+              instance.setContent(html);
+            } 
+          }).finally(() => {
+            instance.enable();
+            instance.show();
+          });
+        }
+      } else {
+        // See if we can fetch a full url (with no hash to target)
+        // This is a special case and we should probably do some content thinning / targeting
+        fetch(url)
+        .then(res => res.text())
+        .then(html => {
+          const parser = new DOMParser();
+          const htmlDoc = parser.parseFromString(html, "text/html");
+          const note = htmlDoc.querySelector('main.content');
+          if (note !== null) {
+            // This should only happen for chapter cross references
+            // (since there is no id in the URL)
+            // remove the first header
+            if (note.children.length > 0 && note.children[0].tagName === "HEADER") {
+              note.children[0].remove();
+            }
+            const html = processXRef(null, note);
+            instance.setContent(html);
+          } 
+        }).finally(() => {
+          instance.enable();
+          instance.show();
+        });
+      }
+    }, function(instance) {
+    });
+  }
+      let selectedAnnoteEl;
+      const selectorForAnnotation = ( cell, annotation) => {
+        let cellAttr = 'data-code-cell="' + cell + '"';
+        let lineAttr = 'data-code-annotation="' +  annotation + '"';
+        const selector = 'span[' + cellAttr + '][' + lineAttr + ']';
+        return selector;
+      }
+      const selectCodeLines = (annoteEl) => {
+        const doc = window.document;
+        const targetCell = annoteEl.getAttribute("data-target-cell");
+        const targetAnnotation = annoteEl.getAttribute("data-target-annotation");
+        const annoteSpan = window.document.querySelector(selectorForAnnotation(targetCell, targetAnnotation));
+        const lines = annoteSpan.getAttribute("data-code-lines").split(",");
+        const lineIds = lines.map((line) => {
+          return targetCell + "-" + line;
+        })
+        let top = null;
+        let height = null;
+        let parent = null;
+        if (lineIds.length > 0) {
+            //compute the position of the single el (top and bottom and make a div)
+            const el = window.document.getElementById(lineIds[0]);
+            top = el.offsetTop;
+            height = el.offsetHeight;
+            parent = el.parentElement.parentElement;
+          if (lineIds.length > 1) {
+            const lastEl = window.document.getElementById(lineIds[lineIds.length - 1]);
+            const bottom = lastEl.offsetTop + lastEl.offsetHeight;
+            height = bottom - top;
+          }
+          if (top !== null && height !== null && parent !== null) {
+            // cook up a div (if necessary) and position it 
+            let div = window.document.getElementById("code-annotation-line-highlight");
+            if (div === null) {
+              div = window.document.createElement("div");
+              div.setAttribute("id", "code-annotation-line-highlight");
+              div.style.position = 'absolute';
+              parent.appendChild(div);
+            }
+            div.style.top = top - 2 + "px";
+            div.style.height = height + 4 + "px";
+            div.style.left = 0;
+            let gutterDiv = window.document.getElementById("code-annotation-line-highlight-gutter");
+            if (gutterDiv === null) {
+              gutterDiv = window.document.createElement("div");
+              gutterDiv.setAttribute("id", "code-annotation-line-highlight-gutter");
+              gutterDiv.style.position = 'absolute';
+              const codeCell = window.document.getElementById(targetCell);
+              const gutter = codeCell.querySelector('.code-annotation-gutter');
+              gutter.appendChild(gutterDiv);
+            }
+            gutterDiv.style.top = top - 2 + "px";
+            gutterDiv.style.height = height + 4 + "px";
+          }
+          selectedAnnoteEl = annoteEl;
+        }
+      };
+      const unselectCodeLines = () => {
+        const elementsIds = ["code-annotation-line-highlight", "code-annotation-line-highlight-gutter"];
+        elementsIds.forEach((elId) => {
+          const div = window.document.getElementById(elId);
+          if (div) {
+            div.remove();
+          }
+        });
+        selectedAnnoteEl = undefined;
+      };
+        // Handle positioning of the toggle
+    window.addEventListener(
+      "resize",
+      throttle(() => {
+        elRect = undefined;
+        if (selectedAnnoteEl) {
+          selectCodeLines(selectedAnnoteEl);
+        }
+      }, 10)
+    );
+    function throttle(fn, ms) {
+    let throttle = false;
+    let timer;
+      return (...args) => {
+        if(!throttle) { // first call gets through
+            fn.apply(this, args);
+            throttle = true;
+        } else { // all the others get throttled
+            if(timer) clearTimeout(timer); // cancel #2
+            timer = setTimeout(() => {
+              fn.apply(this, args);
+              timer = throttle = false;
+            }, ms);
+        }
+      };
+    }
+      // Attach click handler to the DT
+      const annoteDls = window.document.querySelectorAll('dt[data-target-cell]');
+      for (const annoteDlNode of annoteDls) {
+        annoteDlNode.addEventListener('click', (event) => {
+          const clickedEl = event.target;
+          if (clickedEl !== selectedAnnoteEl) {
+            unselectCodeLines();
+            const activeEl = window.document.querySelector('dt[data-target-cell].code-annotation-active');
+            if (activeEl) {
+              activeEl.classList.remove('code-annotation-active');
+            }
+            selectCodeLines(clickedEl);
+            clickedEl.classList.add('code-annotation-active');
+          } else {
+            // Unselect the line
+            unselectCodeLines();
+            clickedEl.classList.remove('code-annotation-active');
+          }
+        });
+      }
+  const findCites = (el) => {
+    const parentEl = el.parentElement;
+    if (parentEl) {
+      const cites = parentEl.dataset.cites;
+      if (cites) {
+        return {
+          el,
+          cites: cites.split(' ')
+        };
+      } else {
+        return findCites(el.parentElement)
+      }
+    } else {
+      return undefined;
+    }
+  };
+  var bibliorefs = window.document.querySelectorAll('a[role="doc-biblioref"]');
+  for (var i=0; i<bibliorefs.length; i++) {
+    const ref = bibliorefs[i];
+    const citeInfo = findCites(ref);
+    if (citeInfo) {
+      tippyHover(citeInfo.el, function() {
+        var popup = window.document.createElement('div');
+        citeInfo.cites.forEach(function(cite) {
+          var citeDiv = window.document.createElement('div');
+          citeDiv.classList.add('hanging-indent');
+          citeDiv.classList.add('csl-entry');
+          var biblioDiv = window.document.getElementById('ref-' + cite);
+          if (biblioDiv) {
+            citeDiv.innerHTML = biblioDiv.innerHTML;
+          }
+          popup.appendChild(citeDiv);
+        });
+        return popup.innerHTML;
+      });
+    }
+  }
+});
+</script>
+</div> <!-- /content -->
+<script>var lightboxQuarto = GLightbox({"closeEffect":"zoom","descPosition":"bottom","loop":false,"openEffect":"zoom","selector":".lightbox"});
+(function() {
+  let previousOnload = window.onload;
+  window.onload = () => {
+    if (previousOnload) {
+      previousOnload();
+    }
+    lightboxQuarto.on('slide_before_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      const href = trigger.getAttribute('href');
+      if (href !== null) {
+        const imgEl = window.document.querySelector(`a[href="${href}"] img`);
+        if (imgEl !== null) {
+          const srcAttr = imgEl.getAttribute("src");
+          if (srcAttr && srcAttr.startsWith("data:")) {
+            slideConfig.href = srcAttr;
+          }
+        }
+      } 
+    });
+  
+    lightboxQuarto.on('slide_after_load', (data) => {
+      const { slideIndex, slideNode, slideConfig, player, trigger } = data;
+      if (window.Quarto?.typesetMath) {
+        window.Quarto.typesetMath(slideNode);
+      }
+    });
+  
+  };
+  
+})();
+          </script>
+
+
+
+
+</body></html>
