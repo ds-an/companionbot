@@ -133,10 +133,17 @@ draft" vocab-term-identifier="https://credit.niso.org/contributor-roles/writing-
 </front>
 
 <body>
+<boxed-text>
+<p><bold>Presentation</bold></p>
+<p>Presentation for this project is available
+<ext-link ext-link-type="uri" xlink:href="./companionbot-presentation.pdf">here</ext-link>.</p>
+</boxed-text>
+<p></p>
 <fig>
   <caption><p>Artistic Representation of CompanionBot</p></caption>
   <graphic mimetype="image" mime-subtype="jpeg" xlink:href="./images/robot-image.jpg" />
 </fig>
+<p></p>
 <sec id="companionbot-system-definition-and-super-characterization">
   <title>1. CompanionBot: System Definition and
   Super-Characterization</title>
