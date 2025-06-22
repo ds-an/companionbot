@@ -37,7 +37,17 @@ authors:
 bibliography: references.bib
 ---
 
+::: {.callout-tip appearance="simple" title="Presentation"}
+
+Presentation for this project is available [here](./companionbot-presentation.pdf).
+
+:::
+
+{{< pagebreak >}}
+
 ![Artistic Representation of CompanionBot](./images/robot-image.jpg)
+
+{{< pagebreak >}}
 
 # 1. CompanionBot: System Definition and Super-Characterization
 
