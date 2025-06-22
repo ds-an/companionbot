@@ -39,7 +39,7 @@ bibliography: references.bib
 
 ::: {.callout-tip appearance="simple" title="Presentation"}
 
-Presentation for this project is available [here](./companionbot-presentation.pdf).
+Presentation slides for this project are available [here](./companionbot-presentation.pdf).
 
 :::
 
